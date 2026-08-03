@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check repository structure
+        run: |
+          test -d assets
+          test -d docs
+          test -d installer
+          test -d packages
+          test -d scripts
+          test -d themes
+          test -d wallpapers

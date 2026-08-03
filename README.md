@@ -1,2 +1,34 @@
-# CripOS
-CripOS — Linux kernel asosidagi zamonaviy operatsion tizim. Gaming, dasturlash va sun'iy intellekt uchun optimallashtirilgan. Windows'ga o'xshash qulaylikni taqdim etadi, lekin o'zining noyob dizayni va ilovalariga ega.
+# 🟩 CripOS
+
+> Gaming. Development. AI. Everyday Computing.
+
+CripOS is a modern Linux distribution based on Debian, designed to provide a fast, stable, and user-friendly experience for gamers, developers, and everyday users.
+
+## Vision
+
+Build an operating system that combines the stability of Debian with a modern interface, powerful developer tools, gaming optimizations, and AI integration.
+
+## Features
+
+- 🎮 Gaming Ready
+- 💻 Developer Friendly
+- 🤖 AI Integration
+- ☁️ Cloud Support
+- 🟩 Modern Green UI
+- ⚡ Optimized Performance
+- 🔒 Secure by Default
+
+## Base
+
+- Debian
+- Cinnamon Desktop
+- Linux Kernel
+- APT Package Manager
+
+## Project Status
+
+🚧 Under Development
+
+## License
+
+See LICENSE.
