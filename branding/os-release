@@ -1,0 +1,9 @@
+NAME=CripOS
+ID=cripos
+PRETTY_NAME="CripOS 0.1 Alpha"
+VERSION_ID="0.1"
+VERSION="0.1 Alpha"
+VERSION_CODENAME=Creeper
+HOME_URL="https://github.com/creperman737/CripOS"
+SUPPORT_URL="https://github.com/creperman737/CripOS"
+BUG_REPORT_URL="https://github.com/creperman737/CripOS/issues"

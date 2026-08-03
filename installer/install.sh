@@ -1,17 +1,27 @@
 #!/bin/bash
 
-echo "CripOS Installer"
-echo "================"
+echo "================================="
+echo "      Welcome to CripOS"
+echo "================================="
 
-echo "Starting installation..."
+sudo apt update
 
-if command -v sudo >/dev/null 2>&1; then
-  echo "Sudo detected."
-else
-  echo "Sudo is required for installation."
-  exit 1
-fi
+echo "Installing base packages..."
 
-bash ../packages/cripos-base.sh
+sudo apt install -y \
+git \
+curl \
+wget \
+vim \
+htop \
+neofetch
 
-echo "Installation completed."
+echo "Installing Cinnamon..."
+
+sudo apt install -y task-cinnamon-desktop
+
+echo "Installing LightDM..."
+
+sudo apt install -y lightdm
+
+echo "Installation Complete!"

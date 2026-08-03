@@ -1,0 +1,6 @@
+CripOS 0.1 Alpha
+Codename: Creeper
+Base: Debian 13 (Trixie)
+Desktop: Cinnamon
+Kernel: Linux
+Architecture: x86_64

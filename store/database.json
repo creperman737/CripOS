@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "Crip Center",
+      "description": "System settings and utilities",
+      "package": "crip-center"
+    },
+    {
+      "name": "Crip Theme",
+      "description": "Visual theme pack",
+      "package": "crip-theme"
+    }
+  ]
+}
