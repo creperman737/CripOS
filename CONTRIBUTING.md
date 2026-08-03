@@ -1,16 +1,37 @@
 # Contributing to CripOS
 
-Thank you for your interest in contributing to CripOS.
+Thank you for your interest in CripOS.
 
-## How to contribute
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Open a pull request
+## How to Contribute
 
-## Branching model
-- main for stable releases
-- develop for integration of new features
-- feature/* for new work
-- release/* for release preparation
-- hotfix/* for urgent fixes
+- Fork the repository.
+- Create a feature branch.
+- Make your changes.
+- Commit your work.
+- Open a Pull Request.
+
+## Coding Standards
+
+- Write clean code.
+- Follow project structure.
+- Test before submitting.
+- Keep commits meaningful.
+
+## Reporting Bugs
+
+Please use GitHub Issues.
+
+Include:
+
+- OS Version
+- Steps to reproduce
+- Expected behavior
+- Actual behavior
+
+## Feature Requests
+
+Feature requests are welcome.
+
+Open an Issue with detailed information.
+
+Thank you for helping improve CripOS.

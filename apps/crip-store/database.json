@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {"name": "Minecraft", "package": "minecraft"},
+    {"name": "Discord", "package": "discord"},
+    {"name": "VS Code", "package": "vscode"},
+    {"name": "Steam", "package": "steam"},
+    {"name": "OBS", "package": "obs"},
+    {"name": "Telegram", "package": "telegram"},
+    {"name": "Chrome", "package": "chrome"}
+  ]
+}

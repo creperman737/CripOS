@@ -1,0 +1,20 @@
+{
+  "welcome_title": "💚 CripOS",
+  "welcome_subtitle": "Never Gives Up",
+  "welcome_message": "Welcome to CripOS",
+  "get_started": "Get Started",
+  "language_title": "Select Language",
+  "language_uz": "Uzbek",
+  "language_en": "English",
+  "continue": "Continue",
+  "internet_title": "Checking Internet...",
+  "internet_connected": "✅ Connected",
+  "updates_title": "Checking for Updates...",
+  "updates_version": "CripOS Alpha 0.1",
+  "skip": "Skip",
+  "install_updates": "Install Updates",
+  "finish_title": "🎉 Setup Complete",
+  "finish_message": "Welcome to CripOS",
+  "finish_subtitle": "Enjoy your journey.",
+  "start": "Start"
+}
