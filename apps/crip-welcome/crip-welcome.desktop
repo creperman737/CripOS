@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Crip Welcome
+Comment=First-run experience for CripOS
+Exec=/usr/local/bin/crip-welcome
+Icon=/opt/cripos/apps/crip-welcome/assets/logo.png
+Terminal=false
+Type=Application
+Categories=System;Utility;

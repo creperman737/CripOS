@@ -1,85 +1,47 @@
 # CripOS Development Plan
 
-## Phase 1 — Foundation ✅
+## Product Identity
 
-- Project Structure
-- Documentation
-- Branding
-- GitHub Repository
-- Development Rules
-
-Status: Complete
+CripOS first-party applications use the **Crip** prefix (for example, Crip Welcome, Crip Launcher, and Crip Center) to keep the system recognizable as one product family.
 
 ---
 
-## Phase 2 — Core Applications 🚧
+## Version 0.1 Alpha — Core Experience 🚧
 
-Applications to develop:
+- Boot ✅
+- Login ✅
+- Crip Welcome 🚧
+- Crip Launcher 🚧
+- Crip Center (Settings) 🚧
+- Theme 📋
+- Wallpapers 📋
 
-- Crip Welcome
-- Crip Launcher
-- Crip Center
+Status: In Development
+
+---
+
+## Version 0.2 Alpha — Essential Apps
+
 - Crip Store
 - Crip Update
-
-Status: In Progress
-
----
-
-## Phase 3 — System Integration
-
-- Cinnamon Customization
-- Custom Theme
-- Custom Icons
-- Wallpapers
-- Plymouth Boot Screen
-- Login Screen
+- Crip Files
 
 Status: Planned
 
 ---
 
-## Phase 4 — Gaming
+## Version 0.3 Alpha — Advanced Experience
 
-- Steam Integration
-- Proton
-- Wine
-- MangoHud
-- GameMode
-- Lutris
-
-Status: Planned
-
----
-
-## Phase 5 — Developer Tools
-
-- Git
-- VS Code
-- Python
-- GCC
-- Docker
-
-Status: Planned
-
----
-
-## Phase 6 — AI
-
+- Gaming Mode
 - AI Assistant
-- Voice Commands
-- AI Settings
-- AI Search
+- Performance Tools
 
 Status: Planned
 
 ---
 
-## Phase 7 — Release
+## Version 1.0 — Official Release
 
-- Alpha
-- Beta
-- Release Candidate
-- Stable 1.0
+- Prepare and validate the complete CripOS experience for its official release.
 
 Status: Planned

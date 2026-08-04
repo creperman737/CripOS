@@ -1,23 +1,33 @@
 #!/usr/bin/env python3
-"""Simple terminal UI for Crip Center."""
+"""Graphical UI for Crip Center."""
 
-from settings import get_system_info
+import tkinter as tk
 
 
-def show_main_menu() -> None:
-    print("1. Wallpaper")
-    print("2. Theme")
-    print("3. Performance Mode")
-    print("4. Gaming Mode")
-    print("5. Updates")
-    print("6. System Info")
-    print("0. Exit")
+def run_center() -> None:
+    root = tk.Tk()
+    root.title("Crip Center")
+    root.geometry("460x360")
+    root.configure(bg="#161B22")
 
-    choice = input("Select an option: ").strip()
+    tk.Label(
+        root,
+        text="Crip Center",
+        fg="#F0F6FC",
+        bg="#161B22",
+        font=("Segoe UI", 16, "bold"),
+    ).pack(pady=(20, 10))
 
-    if choice == "6":
-        print(get_system_info())
-    elif choice == "0":
-        print("Exiting Crip Center.")
-    else:
-        print("Feature coming soon.")
+    for section in ["Appearance", "Network", "Updates", "Security", "About"]:
+        tk.Button(
+            root,
+            text=section,
+            bg="#39D353",
+            fg="#0D1117",
+            relief="flat",
+            padx=10,
+            pady=6,
+            command=lambda s=section: print(f"Open {s}"),
+        ).pack(fill="x", padx=20, pady=4)
+
+    root.mainloop()

@@ -1,0 +1,9 @@
+[Unit]
+Description=Crip AI Service
+
+[Service]
+ExecStart=/usr/bin/python3 -c "print('Crip AI service ready')"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

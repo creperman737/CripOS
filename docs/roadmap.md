@@ -1,43 +1,33 @@
 # CripOS Roadmap
 
-## Alpha 0.1
+## Version 0.1 Alpha — In Development
 
-- Project structure
-- Branding
-- Documentation
-- GitHub repository
-
----
-
-## Alpha 0.2
-
-- Debian customization
-- Cinnamon customization
-- Wallpapers
-- Icons
-- Themes
+- ✅ Boot
+- ✅ Login
+- 🚧 Crip Welcome
+- 🚧 Crip Launcher
+- 🚧 Crip Center (Settings)
+- 📋 Theme
+- 📋 Wallpapers
 
 ---
 
-## Beta 0.5
-
-- Crip Settings
-- Crip Welcome
-- Crip Update
-
----
-
-## Beta 0.8
+## Version 0.2 Alpha
 
 - Crip Store
-- Crip Explorer
-- Crip Terminal
+- Crip Update
+- Crip Files
+
+---
+
+## Version 0.3 Alpha
+
+- Gaming Mode
+- AI Assistant
+- Performance Tools
 
 ---
 
 ## Version 1.0
 
-- Stable Release
-- Gaming Optimization
-- AI Assistant
-- Cloud Integration
+- Official Release

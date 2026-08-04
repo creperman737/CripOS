@@ -1,0 +1,18 @@
+:root {
+  --primary-green: #39D353;
+  --secondary-green: #2EA043;
+  --background-dark: #0D1117;
+  --surface-dark: #161B22;
+  --border: #30363D;
+  --text: #F0F6FC;
+  --muted: #8B949E;
+  --danger: #F85149;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  border-radius: 12px;
+}
