@@ -1,0 +1,177 @@
+/* Minecraft GTK Theme */
+window {
+  background-color: #1D1D1D;
+  color: #FFFFFF;
+}
+
+window.titlebar {
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+}
+
+button {
+  background-color: #3D3D3D;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 0px;
+  padding: 6px 12px;
+  font-family: "Minecraft", monospace;
+}
+
+button:hover {
+  background-color: #4D4D4D;
+}
+
+button:active {
+  background-color: #55FF55;
+  color: #1D1D1D;
+}
+
+entry {
+  background-color: #1D1D1D;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 0px;
+  padding: 6px 10px;
+}
+
+entry:focus {
+  border-color: #55FF55;
+}
+
+label {
+  color: #FFFFFF;
+}
+
+label.muted {
+  color: #AAAAAA;
+}
+
+menu {
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+}
+
+menuitem:hover {
+  background-color: #55FF55;
+  color: #1D1D1D;
+}
+
+treeview {
+  background-color: #1D1D1D;
+  color: #FFFFFF;
+}
+
+treeview:selected {
+  background-color: #55FF55;
+  color: #1D1D1D;
+}
+
+scrollbar {
+  background-color: #2D2D2D;
+}
+
+scrollbar slider {
+  background-color: #3D3D3D;
+  border-radius: 0px;
+}
+
+scrollbar slider:hover {
+  background-color: #55FF55;
+}
+
+checkbutton {
+  color: #FFFFFF;
+}
+
+check {
+  background-color: #1D1D1D;
+  border: 2px solid #000000;
+  border-radius: 0px;
+}
+
+check:checked {
+  background-color: #55FF55;
+  border-color: #55FF55;
+}
+
+radiobutton {
+  color: #FFFFFF;
+}
+
+radio {
+  background-color: #1D1D1D;
+  border: 2px solid #000000;
+  border-radius: 0px;
+}
+
+radio:checked {
+  background-color: #55FF55;
+  border-color: #55FF55;
+}
+
+combobox {
+  background-color: #3D3D3D;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 0px;
+}
+
+notebook {
+  background-color: #1D1D1D;
+}
+
+notebook tab {
+  background-color: #2D2D2D;
+  color: #AAAAAA;
+  padding: 6px 12px;
+}
+
+notebook tab:checked {
+  background-color: #3D3D3D;
+  color: #FFFFFF;
+  border-bottom: 2px solid #55FF55;
+}
+
+progressbar {
+  background-color: #3D3D3D;
+  border-radius: 0px;
+}
+
+progressbar progress {
+  background-color: #55FF55;
+  border-radius: 0px;
+}
+
+scale trough {
+  background-color: #3D3D3D;
+  border-radius: 0px;
+}
+
+scale highlight {
+  background-color: #55FF55;
+  border-radius: 0px;
+}
+
+scale slider {
+  background-color: #FFFFFF;
+  border-radius: 0px;
+}
+
+tooltip {
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 0px;
+}
+
+statusbar {
+  background-color: #2D2D2D;
+  color: #AAAAAA;
+}
+
+headerbar {
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+  border-bottom: 2px solid #000000;
+}

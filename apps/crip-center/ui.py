@@ -4,6 +4,11 @@
 import tkinter as tk
 
 
+def get_center_sections() -> list[str]:
+    """Return the list of Crip Center sections."""
+    return ["Appearance", "Network", "Updates", "Security", "About"]
+
+
 def run_center() -> None:
     root = tk.Tk()
     root.title("Crip Center")
@@ -18,7 +23,7 @@ def run_center() -> None:
         font=("Segoe UI", 16, "bold"),
     ).pack(pady=(20, 10))
 
-    for section in ["Appearance", "Network", "Updates", "Security", "About"]:
+    for section in get_center_sections():
         tk.Button(
             root,
             text=section,

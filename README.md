@@ -1,4 +1,4 @@
-# � CripOS
+# CripOS
 
 Modern Debian-based Operating System
 
@@ -12,6 +12,6 @@ Modern Debian-based Operating System
 - Crip Center
 - ISO Builder
 
-Status:
+## Status
 
 🚧 Alpha Development

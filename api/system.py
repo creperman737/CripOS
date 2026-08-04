@@ -3,4 +3,4 @@
 
 
 def get_system_info() -> dict:
-    return {"name": "CripOS", "version": "Alpha 0.2", "status": "development"}
+    return {"name": "CripOS", "version": "Alpha 0.1", "status": "development"}

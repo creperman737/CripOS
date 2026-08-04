@@ -1,0 +1,176 @@
+/* Crip Light GTK Theme */
+window {
+  background-color: #FFFFFF;
+  color: #1F2328;
+}
+
+window.titlebar {
+  background-color: #F6F8FA;
+  color: #1F2328;
+}
+
+button {
+  background-color: #F6F8FA;
+  color: #1F2328;
+  border: 1px solid #D0D7DE;
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+button:hover {
+  background-color: #E8ECEF;
+}
+
+button:active {
+  background-color: #1F883D;
+  color: #FFFFFF;
+}
+
+entry {
+  background-color: #FFFFFF;
+  color: #1F2328;
+  border: 1px solid #D0D7DE;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+entry:focus {
+  border-color: #1F883D;
+}
+
+label {
+  color: #1F2328;
+}
+
+label.muted {
+  color: #656D76;
+}
+
+menu {
+  background-color: #FFFFFF;
+  color: #1F2328;
+}
+
+menuitem:hover {
+  background-color: #1F883D;
+  color: #FFFFFF;
+}
+
+treeview {
+  background-color: #FFFFFF;
+  color: #1F2328;
+}
+
+treeview:selected {
+  background-color: #1F883D;
+  color: #FFFFFF;
+}
+
+scrollbar {
+  background-color: #F6F8FA;
+}
+
+scrollbar slider {
+  background-color: #D0D7DE;
+  border-radius: 4px;
+}
+
+scrollbar slider:hover {
+  background-color: #1F883D;
+}
+
+checkbutton {
+  color: #1F2328;
+}
+
+check {
+  background-color: #FFFFFF;
+  border: 1px solid #D0D7DE;
+  border-radius: 4px;
+}
+
+check:checked {
+  background-color: #1F883D;
+  border-color: #1F883D;
+}
+
+radiobutton {
+  color: #1F2328;
+}
+
+radio {
+  background-color: #FFFFFF;
+  border: 1px solid #D0D7DE;
+  border-radius: 50%;
+}
+
+radio:checked {
+  background-color: #1F883D;
+  border-color: #1F883D;
+}
+
+combobox {
+  background-color: #F6F8FA;
+  color: #1F2328;
+  border: 1px solid #D0D7DE;
+  border-radius: 6px;
+}
+
+notebook {
+  background-color: #FFFFFF;
+}
+
+notebook tab {
+  background-color: #F6F8FA;
+  color: #656D76;
+  padding: 6px 12px;
+}
+
+notebook tab:checked {
+  background-color: #FFFFFF;
+  color: #1F2328;
+  border-bottom: 2px solid #1F883D;
+}
+
+progressbar {
+  background-color: #E8ECEF;
+  border-radius: 4px;
+}
+
+progressbar progress {
+  background-color: #1F883D;
+  border-radius: 4px;
+}
+
+scale trough {
+  background-color: #E8ECEF;
+  border-radius: 4px;
+}
+
+scale highlight {
+  background-color: #1F883D;
+  border-radius: 4px;
+}
+
+scale slider {
+  background-color: #1F2328;
+  border-radius: 50%;
+}
+
+tooltip {
+  background-color: #F6F8FA;
+  color: #1F2328;
+  border: 1px solid #D0D7DE;
+  border-radius: 4px;
+}
+
+statusbar {
+  background-color: #F6F8FA;
+  color: #656D76;
+}
+
+headerbar {
+  background-color: #F6F8FA;
+  color: #1F2328;
+  border-bottom: 1px solid #D0D7DE;
+}

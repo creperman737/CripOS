@@ -4,6 +4,11 @@
 import tkinter as tk
 
 
+def get_launcher_apps() -> list[str]:
+    """Return the list of core launcher apps."""
+    return ["Files", "Browser", "Terminal", "Settings", "Store", "Updates", "Games"]
+
+
 def launch_launcher() -> None:
     root = tk.Tk()
     root.title("Crip Launcher")
@@ -18,7 +23,7 @@ def launch_launcher() -> None:
         font=("Segoe UI", 16, "bold"),
     ).pack(pady=(20, 10))
 
-    for label in ["Files", "Browser", "Terminal", "Settings", "Store", "Updates", "Games"]:
+    for label in get_launcher_apps():
         tk.Button(
             root,
             text=label,

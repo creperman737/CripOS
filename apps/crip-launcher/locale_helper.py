@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def load_strings(lang: str = "uz") -> dict:
-    path = Path(__file__).resolve().parents[1] / "locales" / lang / "launcher.json"
+    path = Path(__file__).resolve().parents[2] / "locales" / lang / "launcher.json"
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
 
