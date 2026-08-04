@@ -1,17 +1,101 @@
-# CripOS
+# 💚 CripOS
 
-Modern Debian-based Operating System
+**Never Give Up.**
+
+Modern Debian-based Operating System built with Python.
+
+## Quick Overview
+
+- **Base:** Debian 13 (Trixie)
+- **Desktop:** Cinnamon
+- **Codename:** Creeper
+- **Status:** 🚧 Alpha Development
 
 ## Features
 
-- Debian 13 Base
-- Cinnamon Desktop
-- Gaming Ready
-- Windows App Support (Planned)
-- Crip Store
-- Crip Center
-- ISO Builder
+- ✅ Boot & Login System
+- ✅ First-run Welcome Wizard
+- ✅ Crip Launcher
+- ✅ Crip Center (Settings Hub)
+- ✅ Crip Terminal
+- ✅ Crip Update
+- ✅ Crip Installer
+- ✅ Developer SDK (cripapi, cripui, cripwidgets, cripthemes)
+- 🚧 Crip Store
+- 🚧 Crip Files
+- 🚧 Gaming Mode (planned)
 
-## Status
+## Installation
 
-🚧 Alpha Development
+```bash
+# Run the installer (Linux)
+sudo bash installer/install.sh
+
+# Build ISO (Linux)
+bash scripts/build-iso.sh
+```
+
+## Quick Start (Development)
+
+```bash
+# Run all tests
+python tests/test_alpha_apps.py
+python tests/test_system_modules.py
+python tests/test_sdk.py
+python apps/crip-welcome/test_ui.py
+```
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [01-overview.md](docs/01-overview.md) | Project overview and features |
+| [02-roadmap.md](docs/02-roadmap.md) | Version roadmap |
+| [03-development-plan.md](docs/03-development-plan.md) | Sprint plan |
+| [04-architecture.md](docs/04-architecture.md) | Architecture layers |
+| [05-design-system.md](docs/05-design-system.md) | Colors, typography, UI |
+| [06-applications.md](docs/06-applications.md) | All Crip apps |
+| [07-sdk.md](docs/07-sdk.md) | Developer SDK guide |
+| [08-api.md](docs/08-api.md) | Internal API reference |
+| [09-system.md](docs/09-system.md) | System modules |
+| [10-testing.md](docs/10-testing.md) | Testing guide |
+| [11-release.md](docs/11-release.md) | Release plan |
+| [12-future.md](docs/12-future.md) | Future roadmap |
+
+## Repository Structure
+
+```
+CripOS/
+│
+├── apps/          # First-party applications
+├── sdk/           # Developer SDK
+├── api/           # Internal API layer
+├── system/        # System modules
+├── services/      # Background services
+├── libs/          # Shared libraries
+├── themes/        # GTK themes
+├── locales/       # Language files
+├── branding/      # Brand assets & splash text
+└── docs/          # Documentation
+```
+
+## Tests
+
+**41+ automated tests** covering:
+
+- Application APIs
+- System modules
+- SDK packages
+- Welcome wizard
+- JSON validation
+- Python syntax
+
+## License & Contributing
+
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines
+- See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards
+- See [CHANGELOG.md](CHANGELOG.md) for version history
+
+---
+
+💚 **CripOS** — *Never Give Up.*

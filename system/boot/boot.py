@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """CripOS boot sequence."""
 
+import json
 import os
 import subprocess
 import sys
 from pathlib import Path
+
+# Add repo root to path for imports
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 
 def check_disk_space() -> bool:
@@ -56,6 +62,13 @@ def start_services() -> None:
 def run_boot() -> None:
     """Execute the boot sequence."""
     print("CripOS booting...")
+
+    # Show Minecraft-inspired splash text
+    try:
+        from branding.splash import get_splash_text
+        print(f"💚 {get_splash_text()}")
+    except ImportError:
+        pass
 
     if not check_disk_space():
         print("WARNING: Low disk space!")
