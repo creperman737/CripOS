@@ -42,10 +42,20 @@ def get_current_wallpaper() -> str:
 
 def set_wallpaper(name: str) -> bool:
     """Set active wallpaper by name or path."""
-    config = load_wallpaper_config()
-    config["current"] = name
-    save_wallpaper_config(config)
-    return True
+    known = list_wallpapers()
+    if name in known:
+        config = load_wallpaper_config()
+        config["current"] = name
+        save_wallpaper_config(config)
+        return True
+    # Allow setting by explicit file path if it exists
+    candidate = Path(name).expanduser()
+    if candidate.is_file():
+        config = load_wallpaper_config()
+        config["current"] = str(candidate)
+        save_wallpaper_config(config)
+        return True
+    return False
 
 
 def list_wallpapers() -> list[str]:

@@ -29,6 +29,7 @@ THEME = {
 
 SECTIONS = [
     ("Appearance", "🖌️"),
+    ("Wallpaper", "🖼️"),
     ("Language", "🌍"),
     ("Network", "🌐"),
     ("Updates", "🔄"),
@@ -191,6 +192,7 @@ class CenterWindow:
         self._clear_content()
         handler = {
             "Appearance": self._render_appearance,
+            "Wallpaper": self._render_wallpaper,
             "Language": self._render_language,
             "Network": self._render_network,
             "Updates": self._render_updates,
@@ -237,9 +239,55 @@ class CenterWindow:
         self._render_action_button(self.strings["apply"], self._apply_theme)
 
     def _apply_theme(self) -> None:
-        self.config["theme"] = self.theme_var.get()
-        save_config(self.config)
-        self._show_toast(f"{self.strings['theme_label']}: {self.theme_var.get()}")
+        from system.theme_manager import set_theme
+        theme = self.theme_var.get()
+        if set_theme(theme):
+            self.config["theme"] = theme
+            save_config(self.config)
+            self._show_toast(f"{self.strings['theme_label']}: {theme}")
+        else:
+            self._show_toast("❌ Theme failed")
+
+    def _render_wallpaper(self) -> None:
+        """Wallpaper selection UI."""
+        self._render_header(self.strings["appearance"], "wallpaper")
+
+        from system.wallpaper_manager import get_current_wallpaper, list_wallpapers, set_wallpaper
+
+        tk.Label(
+            self.content,
+            text="Wallpaper",
+            fg=THEME["text"],
+            bg=THEME["bg"],
+            font=("Segoe UI", 10, "bold"),
+        ).pack(anchor="w", padx=30, pady=(12, 4))
+
+        self.wallpaper_var = tk.StringVar(value=get_current_wallpaper())
+        for wp in list_wallpapers():
+            tk.Radiobutton(
+                self.content,
+                text=wp,
+                variable=self.wallpaper_var,
+                value=wp,
+                bg=THEME["bg"],
+                fg=THEME["text"],
+                selectcolor=THEME["secondary"],
+                activebackground=THEME["bg"],
+                activeforeground=THEME["text"],
+                font=("Segoe UI", 11),
+                padx=10,
+                pady=6,
+            ).pack(anchor="w", padx=40)
+
+        self._render_action_button(self.strings["apply"], self._apply_wallpaper)
+
+    def _apply_wallpaper(self) -> None:
+        from system.wallpaper_manager import set_wallpaper
+        wp = self.wallpaper_var.get()
+        if set_wallpaper(wp):
+            self._show_toast(f"Wallpaper: {wp}")
+        else:
+            self._show_toast("❌ Wallpaper failed")
 
     def _render_language(self) -> None:
         """Language selection UI."""
@@ -277,10 +325,15 @@ class CenterWindow:
         self._render_action_button(self.strings["apply"], self._apply_language)
 
     def _apply_language(self) -> None:
-        self.config["language"] = self.language_var.get()
-        save_config(self.config)
-        self.strings = get_language_strings(self.language_var.get())
-        self._show_toast(f"{self.strings['language_label']}: {self.language_var.get()}")
+        from system.language_manager import set_language
+        lang = self.language_var.get()
+        if set_language(lang):
+            self.config["language"] = lang
+            save_config(self.config)
+            self.strings = get_language_strings(lang)
+            self._show_toast(f"{self.strings['language_label']}: {lang}")
+        else:
+            self._show_toast("❌ Language failed")
 
     def _render_network(self) -> None:
         """Network status UI."""
@@ -320,14 +373,18 @@ class CenterWindow:
         self._render_action_button(self.strings["check_updates"], self._check_updates)
 
     def _toggle_auto_updates(self) -> None:
+        from system.updates.updates import load_update_config, save_update_config
         self.config["auto_updates"] = self.auto_updates_var.get()
         save_config(self.config)
+        update_config = load_update_config()
+        update_config["auto_install"] = self.auto_updates_var.get()
+        save_update_config(update_config)
 
     def _check_updates(self) -> None:
-        from api.updates import get_update_status
-        status = get_update_status()
+        from system.updates.updates import check_updates
+        status = check_updates()
         available = status.get("available", 0)
-        self._show_toast(f"{available} updates available")
+        self._show_toast(f"{self.strings['updates']}: {available}")
 
     def _render_security(self) -> None:
         """Security settings UI."""
@@ -358,8 +415,12 @@ class CenterWindow:
         ).pack(anchor="w", padx=50, pady=4)
 
     def _toggle_firewall(self) -> None:
+        from system.security.security import load_security_config, save_security_config
         self.config["firewall"] = self.firewall_var.get()
         save_config(self.config)
+        security = load_security_config()
+        security["firewall"] = self.firewall_var.get()
+        save_security_config(security)
 
     def _render_about(self) -> None:
         """About section with system info."""

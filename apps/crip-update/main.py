@@ -12,7 +12,9 @@ REPO_ROOT = APP_DIR.parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from api.updates import get_update_status
+from system.updates.updates import check_updates as system_check_updates
+from system.updates.updates import install_updates as system_install_updates
+from system.updates.updates import load_update_config
 
 
 class UpdateWindow:
@@ -81,19 +83,30 @@ class UpdateWindow:
 
     def check_updates(self) -> None:
         """Check for available updates."""
-        status = get_update_status()
+        status = system_check_updates()
         available = status.get("available", 0)
-        self.status_label.config(text=f"{available} available")
+        channel = status.get("channel", "alpha")
+        self.status_label.config(text=f"{available} available • {channel}")
         self.tree.delete(*self.tree.get_children())
+        if available == 0:
+            self.tree.insert("", "end", text="✓", values=("System is up to date",))
+        else:
+            self.tree.insert("", "end", text="📦", values=(f"{available} package(s) can be upgraded",))
 
     def install_updates(self) -> None:
         """Install available updates."""
-        status = get_update_status()
+        status = system_check_updates()
         available = status.get("available", 0)
         if available == 0:
             self.status_label.config(text="Up to date")
             return
         self.status_label.config(text="Installing...")
+        if system_install_updates():
+            self.status_label.config(text="✅ Installed")
+            self.tree.delete(*self.tree.get_children())
+            self.tree.insert("", "end", text="✅", values=("Updates installed successfully",))
+        else:
+            self.status_label.config(text="⚠️ Auto-install disabled")
 
 
 def run_update() -> None:

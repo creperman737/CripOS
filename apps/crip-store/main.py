@@ -191,23 +191,40 @@ class StoreWindow:
 
         self.status.config(text=f"{len(self.tree.get_children())} apps • {category}")
 
-    def install_app(self) -> None:
+    def _selected_package(self) -> str | None:
+        """Return the package name of the selected app, or None."""
         selection = self.tree.selection()
         if not selection:
-            return
+            return None
         item = self.tree.item(selection[0])
-        name = item["text"].split(" ", 1)[1] if " " in item["text"] else item["text"]
-        messagebox.showinfo("Install", f"Installing {name}...\n\n✅ Installed successfully!")
-        self.status.config(text=f"Installed {name}")
+        values = item.get("values", ())
+        if values:
+            return values[0]
+        return None
+
+    def install_app(self) -> None:
+        from system.package_manager import install_package
+        package = self._selected_package()
+        if not package:
+            return
+        if install_package(package):
+            messagebox.showinfo("Install", f"✅ Installed: {package}")
+            self.status.config(text=f"Installed {package}")
+        else:
+            messagebox.showerror("Install", f"❌ Failed to install: {package}")
+            self.status.config(text=f"Failed {package}")
 
     def remove_app(self) -> None:
-        selection = self.tree.selection()
-        if not selection:
+        from system.package_manager import remove_package
+        package = self._selected_package()
+        if not package:
             return
-        item = self.tree.item(selection[0])
-        name = item["text"].split(" ", 1)[1] if " " in item["text"] else item["text"]
-        if messagebox.askyesno("Remove", f"Remove {name}?"):
-            self.status.config(text=f"Removed {name}")
+        if messagebox.askyesno("Remove", f"Remove {package}?"):
+            if remove_package(package):
+                self.status.config(text=f"Removed {package}")
+            else:
+                messagebox.showerror("Remove", f"❌ Failed to remove: {package}")
+                self.status.config(text=f"Failed {package}")
 
 
 def run_store() -> None:

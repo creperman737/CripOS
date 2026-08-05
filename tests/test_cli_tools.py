@@ -19,6 +19,7 @@ def _load_tool(name: str):
     return module
 
 
+crip = importlib.import_module("tools.crip")
 crip_info = _load_tool("crip-info")
 crip_update = _load_tool("crip-update")
 crip_store = _load_tool("crip-store")
@@ -104,6 +105,102 @@ class CripDoctorTests(unittest.TestCase):
         self.assertTrue(results["Directory 'apps'"])
         self.assertIn("Directory 'sdk'", results)
         self.assertTrue(results["Directory 'sdk'"])
+
+
+class CripCliTests(unittest.TestCase):
+    def test_commands_include_new_commands(self) -> None:
+        self.assertIn("install", crip.COMMANDS)
+        self.assertIn("remove", crip.COMMANDS)
+        self.assertIn("search", crip.COMMANDS)
+        self.assertIn("packages", crip.COMMANDS)
+        self.assertIn("upgrade", crip.COMMANDS)
+        self.assertIn("clean", crip.COMMANDS)
+        self.assertIn("theme", crip.COMMANDS)
+        self.assertIn("wallpaper", crip.COMMANDS)
+        self.assertIn("language", crip.COMMANDS)
+
+    def test_install_requires_argument(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_install([])
+        self.assertIn("Usage", buffer.getvalue())
+
+    def test_packages_outputs(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_packages([])
+        self.assertIn("Installed Packages", buffer.getvalue())
+
+    def test_upgrade_outputs(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_upgrade([])
+        self.assertIn("Upgrading", buffer.getvalue())
+
+    def test_clean_outputs(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_clean([])
+        self.assertIn("Package cache", buffer.getvalue())
+
+    def test_theme_list_outputs(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_theme([])
+        self.assertIn("Theme Manager", buffer.getvalue())
+        self.assertIn("crip-dark", buffer.getvalue())
+
+    def test_wallpaper_list_outputs(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_wallpaper([])
+        self.assertIn("Wallpaper Manager", buffer.getvalue())
+
+    def test_language_list_outputs(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_language([])
+        self.assertIn("Language Manager", buffer.getvalue())
+        self.assertIn("uz", buffer.getvalue())
+
+    def test_language_set_valid(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_language(["uz"])
+        self.assertIn("✅", buffer.getvalue())
+
+    def test_language_set_invalid(self) -> None:
+        import io
+        import contextlib
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            crip._cmd_language(["xx"])
+        self.assertIn("❌", buffer.getvalue())
 
 
 if __name__ == "__main__":

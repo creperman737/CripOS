@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+from tkinter import filedialog, messagebox, simpledialog, ttk
 
 APP_DIR = Path(__file__).resolve().parent
 REPO_ROOT = APP_DIR.parents[1]
@@ -103,6 +103,36 @@ class CripFilesWindow:
             relief="flat",
             padx=8,
             command=self.new_folder,
+        ).pack(side="left", padx=2)
+
+        tk.Button(
+            toolbar,
+            text="📋 Copy",
+            bg=THEME["surface"],
+            fg=THEME["text"],
+            relief="flat",
+            padx=8,
+            command=self.copy_item,
+        ).pack(side="left", padx=2)
+
+        tk.Button(
+            toolbar,
+            text="✂️ Move",
+            bg=THEME["surface"],
+            fg=THEME["text"],
+            relief="flat",
+            padx=8,
+            command=self.move_item,
+        ).pack(side="left", padx=2)
+
+        tk.Button(
+            toolbar,
+            text="✏️ Rename",
+            bg=THEME["surface"],
+            fg=THEME["text"],
+            relief="flat",
+            padx=8,
+            command=self.rename_item,
         ).pack(side="left", padx=2)
 
         tk.Button(
@@ -255,6 +285,63 @@ class CripFilesWindow:
             counter += 1
         path.mkdir()
         self.load_directory(self.current_dir)
+
+    def _selected_path(self) -> Path | None:
+        """Return the path of the selected item, or None."""
+        selection = self.tree.selection()
+        if not selection:
+            return None
+        item = self.tree.item(selection[0])
+        name = item["text"].split(" ", 1)[1] if " " in item["text"] else item["text"]
+        return self.current_dir / name
+
+    def copy_item(self) -> None:
+        path = self._selected_path()
+        if not path:
+            return
+        dest = filedialog.askdirectory(title="Copy to...", initialdir=str(self.current_dir))
+        if not dest:
+            return
+        try:
+            target = Path(dest) / path.name
+            if path.is_dir():
+                shutil.copytree(path, target)
+            else:
+                shutil.copy2(path, target)
+            self.status.config(text=f"Copied {path.name} → {dest}")
+        except OSError as e:
+            messagebox.showerror("Error", str(e))
+
+    def move_item(self) -> None:
+        path = self._selected_path()
+        if not path:
+            return
+        dest = filedialog.askdirectory(title="Move to...", initialdir=str(self.current_dir))
+        if not dest:
+            return
+        try:
+            target = Path(dest) / path.name
+            shutil.move(str(path), str(target))
+            self.load_directory(self.current_dir)
+            self.status.config(text=f"Moved {path.name} → {dest}")
+        except OSError as e:
+            messagebox.showerror("Error", str(e))
+
+    def rename_item(self) -> None:
+        path = self._selected_path()
+        if not path:
+            return
+        name = path.name
+
+        new_name = simpledialog.askstring("Rename", f"Rename '{name}' to:", initialvalue=name)
+        if not new_name or new_name == name:
+            return
+        new_path = self.current_dir / new_name
+        try:
+            path.rename(new_path)
+            self.load_directory(self.current_dir)
+        except OSError as e:
+            messagebox.showerror("Error", str(e))
 
     def delete_item(self) -> None:
         selection = self.tree.selection()

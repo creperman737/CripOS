@@ -21,6 +21,15 @@ COMMANDS = {
     "files": "Open Crip Files manager",
     "version": "Display CripOS version",
     "info": "Display system information",
+    "install": "Install a package (crip install <name>)",
+    "remove": "Remove a package (crip remove <name>)",
+    "search": "Search for packages (crip search <query>)",
+    "packages": "List installed packages",
+    "upgrade": "Upgrade all packages",
+    "clean": "Clean package cache",
+    "theme": "Switch theme (crip theme <name>)",
+    "wallpaper": "Set wallpaper (crip wallpaper <name>)",
+    "language": "Set language (crip language <code>)",
 }
 
 
@@ -35,6 +44,146 @@ def _load_and_run(tool_name: str, func_name: str = "main", *args) -> None:
     fn = getattr(module, func_name, None)
     if callable(fn):
         fn(*args)
+
+
+def _list_args(manager_name: str, title: str, current_key: str, available_key: str) -> None:
+    """List available items from a system manager with a marker on the current one."""
+    module = importlib.import_module(manager_name)
+    current = getattr(module, current_key)()
+    items = getattr(module, available_key)()
+    print(f"💚 CripOS {title}")
+    print("=" * 35)
+    if isinstance(items, dict):
+        print(f"  Current : {current}")
+        print("  Available:")
+        for key, label in items.items():
+            marker = "●" if key == current else "○"
+            print(f"    {marker} {key} - {label}")
+    else:
+        print(f"  Current : {current}")
+        print("  Available:")
+        for item in items:
+            marker = "●" if item == current else "○"
+            print(f"    {marker} {item}")
+
+
+def _cmd_install(args: list[str]) -> None:
+    if not args:
+        print("Usage: crip install <package-name>")
+        return
+    from system.package_manager import install_package
+    name = args[0]
+    if install_package(name):
+        print(f"✅ Installed: {name}")
+    else:
+        print(f"❌ Failed to install: {name}")
+
+
+def _cmd_remove(args: list[str]) -> None:
+    if not args:
+        print("Usage: crip remove <package-name>")
+        return
+    from system.package_manager import remove_package
+    name = args[0]
+    if remove_package(name):
+        print(f"✅ Removed: {name}")
+    else:
+        print(f"❌ Failed to remove: {name}")
+
+
+def _cmd_search(args: list[str]) -> None:
+    if not args:
+        print("Usage: crip search <query>")
+        return
+    from system.package_manager import search_packages
+    query = args[0]
+    results = search_packages(query)
+    print(f"💚 Search results for '{query}':")
+    print("=" * 35)
+    if results:
+        for pkg in results:
+            print(f"  {pkg}")
+    else:
+        print("  No packages found.")
+    print(f"  ({len(results)} results)")
+
+
+def _cmd_packages(args: list[str]) -> None:
+    from system.package_manager import list_installed
+    installed = list_installed()
+    print("💚 CripOS Installed Packages")
+    print("=" * 35)
+    if installed:
+        for pkg in installed:
+            print(f"  • {pkg}")
+    else:
+        print("  No packages recorded yet.")
+    print(f"  ({len(installed)} packages)")
+
+
+def _cmd_upgrade(args: list[str]) -> None:
+    from system.package_manager import upgrade_packages
+    print("💚 Upgrading packages...")
+    if upgrade_packages():
+        print("✅ Packages upgraded.")
+    else:
+        print("⚠️ Upgrade failed or apt unavailable. Use 'crip update' to refresh lists.")
+
+
+def _cmd_clean(args: list[str]) -> None:
+    from system.package_manager import clean_packages
+    print("💚 Cleaning package cache...")
+    if clean_packages():
+        print("✅ Package cache cleaned.")
+    else:
+        print("⚠️ Package cache cleanup failed or apt unavailable.")
+
+
+def _cmd_theme(args: list[str]) -> None:
+    from system.theme_manager import get_current_theme, list_themes, set_theme
+    if not args or args[0] in ("-h", "--help", "list"):
+        _list_args("system.theme_manager", "Theme Manager", "get_current_theme", "list_themes")
+        return
+    name = args[0]
+    if set_theme(name):
+        print(f"✅ Theme set to: {name}")
+    else:
+        print(f"❌ Unknown theme: {name}")
+        print(f"   Available: {', '.join(list_themes())}")
+
+
+def _cmd_wallpaper(args: list[str]) -> None:
+    from system.wallpaper_manager import (
+        get_current_wallpaper,
+        get_random_wallpaper,
+        list_wallpapers,
+        set_wallpaper,
+    )
+    if not args or args[0] in ("-h", "--help", "list"):
+        _list_args("system.wallpaper_manager", "Wallpaper Manager", "get_current_wallpaper", "list_wallpapers")
+        return
+    name = args[0]
+    if name == "random":
+        name = get_random_wallpaper()
+        print(f"🎲 Random wallpaper: {name}")
+    if set_wallpaper(name):
+        print(f"✅ Wallpaper set to: {name}")
+    else:
+        print(f"❌ Unknown wallpaper: {name}")
+        print(f"   Available: {', '.join(list_wallpapers())}")
+
+
+def _cmd_language(args: list[str]) -> None:
+    from system.language_manager import get_current_language, list_languages, set_language
+    if not args or args[0] in ("-h", "--help", "list"):
+        _list_args("system.language_manager", "Language Manager", "get_current_language", "list_languages")
+        return
+    lang = args[0]
+    if set_language(lang):
+        print(f"✅ Language set to: {lang}")
+    else:
+        print(f"❌ Unknown language: {lang}")
+        print(f"   Available: {', '.join(list_languages())}")
 
 
 def main() -> None:
@@ -55,6 +204,7 @@ def main() -> None:
         return
 
     cmd = sys.argv[1].lower()
+    args = sys.argv[2:]
 
     if cmd == "version":
         print(get_version())
@@ -72,6 +222,24 @@ def main() -> None:
         _load_and_run("crip-store")
     elif cmd == "center":
         _load_and_run("crip-center")
+    elif cmd == "install":
+        _cmd_install(args)
+    elif cmd == "remove":
+        _cmd_remove(args)
+    elif cmd == "search":
+        _cmd_search(args)
+    elif cmd == "packages":
+        _cmd_packages(args)
+    elif cmd == "upgrade":
+        _cmd_upgrade(args)
+    elif cmd == "clean":
+        _cmd_clean(args)
+    elif cmd == "theme":
+        _cmd_theme(args)
+    elif cmd == "wallpaper":
+        _cmd_wallpaper(args)
+    elif cmd == "language":
+        _cmd_language(args)
     elif cmd == "files":
         path = REPO_ROOT / "apps" / "crip-files" / "main.py"
         spec = importlib.util.spec_from_file_location("crip_files_main", path)

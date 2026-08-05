@@ -14,6 +14,12 @@ from system.startup.startup import load_startup_config, DEFAULT_STARTUP
 from system.wallpaper_manager import get_current_wallpaper, list_wallpapers, set_wallpaper, get_random_wallpaper
 from system.theme_manager import get_current_theme, list_themes, set_theme, get_theme_colors
 from system.package_manager import list_installed, search_packages
+from system.language_manager import (
+    get_current_language,
+    get_language_name,
+    list_languages,
+    set_language,
+)
 
 
 class BootTests(unittest.TestCase):
@@ -84,6 +90,9 @@ class WallpaperTests(unittest.TestCase):
     def test_set_wallpaper(self) -> None:
         self.assertTrue(set_wallpaper("default"))
 
+    def test_set_wallpaper_invalid(self) -> None:
+        self.assertFalse(set_wallpaper("nonexistent-wallpaper-xyz"))
+
     def test_get_random_wallpaper(self) -> None:
         self.assertIsInstance(get_random_wallpaper(), str)
 
@@ -106,6 +115,27 @@ class PackageManagerTests(unittest.TestCase):
     def test_list_installed(self) -> None:
         installed = list_installed()
         self.assertIsInstance(installed, list)
+
+
+class LanguageManagerTests(unittest.TestCase):
+    def test_get_current_language(self) -> None:
+        self.assertIsInstance(get_current_language(), str)
+
+    def test_list_languages(self) -> None:
+        languages = list_languages()
+        self.assertIn("en", languages)
+        self.assertIn("uz", languages)
+
+    def test_set_language_valid(self) -> None:
+        self.assertTrue(set_language("uz"))
+        self.assertEqual(get_current_language(), "uz")
+
+    def test_set_language_invalid(self) -> None:
+        self.assertFalse(set_language("xx"))
+
+    def test_get_language_name(self) -> None:
+        self.assertEqual(get_language_name("en"), "English")
+        self.assertEqual(get_language_name("uz"), "O'zbekcha")
 
 
 if __name__ == "__main__":

@@ -85,8 +85,30 @@ def search_packages(query: str) -> list[str]:
 def update_packages() -> bool:
     """Update package lists."""
     try:
-        subprocess.run(["apt-get", "update"], check=False, capture_output=True)
-        return True
+        result = subprocess.run(["apt-get", "update"], check=False, capture_output=True)
+        return result.returncode == 0
+    except FileNotFoundError:
+        return False
+
+
+def upgrade_packages() -> bool:
+    """Upgrade all installed packages."""
+    try:
+        result = subprocess.run(
+            ["apt-get", "upgrade", "-y"], check=False, capture_output=True
+        )
+        return result.returncode == 0
+    except FileNotFoundError:
+        return False
+
+
+def clean_packages() -> bool:
+    """Clean package cache."""
+    try:
+        result = subprocess.run(
+            ["apt-get", "clean"], check=False, capture_output=True
+        )
+        return result.returncode == 0
     except FileNotFoundError:
         return False
 
