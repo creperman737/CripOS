@@ -15,7 +15,7 @@ Endi hujjat yozishni deyarli to'xtatamiz. Endi **CripOS 0.1 Alpha Release Checkl
 - [x] Boot System
 - [x] Login System
 - [x] Desktop Branding
-- [x] Wallpapers
+- [ ] Wallpapers
 
 ### Core Applications
 
@@ -45,14 +45,14 @@ Endi hujjat yozishni deyarli to'xtatamiz. Endi **CripOS 0.1 Alpha Release Checkl
 ### Quality
 
 - [x] Unit Tests
-- [x] Integration Tests
-- [x] Alpha Testing
+- [ ] Integration Tests
+- [ ] Alpha Testing
 
 ### Release
 
-- [x] Build ISO
-- [x] Release Notes
-- [x] GitHub Release
+- [ ] Build ISO
+- [ ] Release Notes
+- [ ] GitHub Release
 
 ---
 
