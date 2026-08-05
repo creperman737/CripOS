@@ -1,0 +1,1 @@
+"""Crip Monitor app package."""

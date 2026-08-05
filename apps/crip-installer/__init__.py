@@ -1,0 +1,1 @@
+"""Crip Installer app package."""

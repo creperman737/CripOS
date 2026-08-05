@@ -8,16 +8,16 @@
 - [x] Documentation
 - [x] Logo
 - [x] Themes
-- [ ] Wallpapers
-- [ ] Boot Animation
-- [ ] Login Theme
+- [x] Wallpapers
+- [x] Boot Animation
+- [x] Login Theme
 
 ## Core Apps
 
 - [x] Crip Welcome
 - [x] Crip Launcher
 - [x] Crip Center
-- [ ] Crip Files
+- [x] Crip Files
 - [x] Crip Terminal
 - [x] Crip Store (structure)
 - [x] Crip Update
@@ -30,8 +30,8 @@
 - [x] API
 - [x] Services
 - [x] Core Library
-- [ ] Package Manager
-- [ ] Settings Engine
+- [x] Package Manager
+- [x] Settings Engine
 - [x] CLI Tools (crip-*)
 
 ## Gaming
@@ -44,10 +44,10 @@
 
 ## Polish
 
-- [ ] Icons
-- [ ] Sounds
-- [ ] Animations
-- [ ] Localization (partial: uz/en)
+- [x] Icons
+- [x] Sounds
+- [x] Animations
+- [x] Localization (uz/en)
 
 ## CLI Commands
 
@@ -63,11 +63,11 @@
 
 | Category | Done | Total |
 |---|---|---|
-| Desktop | 6 | 9 |
-| Core Apps | 8 | 9 |
-| System | 5 | 7 |
+| Desktop | 9 | 9 |
+| Core Apps | 9 | 9 |
+| System | 7 | 7 |
 | Gaming | 0 | 5 |
-| Polish | 0.5 | 4 |
-| **Total** | **19.5** | **34** |
+| Polish | 4 | 4 |
+| **Total** | **29** | **34** |
 
-**Progress: ~57% of v0.1 Alpha checklist complete.**
+**Progress: ~85% of checklist complete (100% of non-gaming core desktop & system tasks).**

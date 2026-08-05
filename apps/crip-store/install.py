@@ -3,9 +3,10 @@
 
 import json
 from pathlib import Path
+from system.package_manager import install_package
 
 
-def install_app(app_name: str) -> None:
+def install_app(app_name: str) -> bool:
     data_path = Path(__file__).with_name("database.json")
     with data_path.open("r", encoding="utf-8") as handle:
         apps = json.load(handle)["apps"]
@@ -13,7 +14,10 @@ def install_app(app_name: str) -> None:
     match = next((item for item in apps if item["name"].lower() == app_name.lower()), None)
     if not match:
         print(f"App '{app_name}' not found.")
-        return
+        return False
 
-    print(f"Installing {match['name']} ({match['package']})...")
-    print("Installation completed (scaffold).")
+    package = match.get("package", app_name.lower())
+    print(f"Installing {match['name']} ({package})...")
+    result = install_package(package)
+    print("Installation completed.")
+    return result

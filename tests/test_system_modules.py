@@ -11,6 +11,9 @@ from system.login.login import hash_password, create_user, authenticate
 from system.security.security import load_security_config, DEFAULT_SECURITY
 from system.updates.updates import load_update_config, DEFAULT_CONFIG
 from system.startup.startup import load_startup_config, DEFAULT_STARTUP
+from system.wallpaper_manager import get_current_wallpaper, list_wallpapers, set_wallpaper, get_random_wallpaper
+from system.theme_manager import get_current_theme, list_themes, set_theme, get_theme_colors
+from system.package_manager import list_installed, search_packages
 
 
 class BootTests(unittest.TestCase):
@@ -68,6 +71,41 @@ class StartupTests(unittest.TestCase):
 
     def test_launcher_starts_by_default(self) -> None:
         self.assertTrue(DEFAULT_STARTUP["crip-launcher"])
+
+
+class WallpaperTests(unittest.TestCase):
+    def test_get_current_wallpaper(self) -> None:
+        self.assertIsInstance(get_current_wallpaper(), str)
+
+    def test_list_wallpapers(self) -> None:
+        wps = list_wallpapers()
+        self.assertGreater(len(wps), 0)
+
+    def test_set_wallpaper(self) -> None:
+        self.assertTrue(set_wallpaper("default"))
+
+    def test_get_random_wallpaper(self) -> None:
+        self.assertIsInstance(get_random_wallpaper(), str)
+
+
+class ThemeManagerTests(unittest.TestCase):
+    def test_get_current_theme(self) -> None:
+        self.assertIsInstance(get_current_theme(), str)
+
+    def test_list_themes(self) -> None:
+        themes = list_themes()
+        self.assertIn("crip-dark", themes)
+        self.assertIn("crip-light", themes)
+
+    def test_get_theme_colors(self) -> None:
+        colors = get_theme_colors("crip-dark")
+        self.assertIn("primary", colors)
+
+
+class PackageManagerTests(unittest.TestCase):
+    def test_list_installed(self) -> None:
+        installed = list_installed()
+        self.assertIsInstance(installed, list)
 
 
 if __name__ == "__main__":

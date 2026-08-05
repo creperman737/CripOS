@@ -1,0 +1,1 @@
+"""Crip Terminal app package."""

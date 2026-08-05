@@ -12,6 +12,11 @@ from branding.splash import get_all_splash_texts, get_splash_text
 
 
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
     print("💚 CripOS")
     print("=" * 35)
     print(f"  {get_splash_text()}")

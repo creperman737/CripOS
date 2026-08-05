@@ -4,6 +4,8 @@
 
 Modern Debian-based Operating System built with Python.
 
+Vision: Create a fast, modern, and user-friendly Debian-based Linux distribution optimized for gaming, developers, and everyday users. Prioritize performance, stability, and simplicity while remaining open-source and community-driven.
+
 ## Quick Overview
 
 - **Base:** Debian 13 (Trixie)

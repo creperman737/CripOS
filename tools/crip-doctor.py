@@ -26,6 +26,11 @@ def check_structure() -> list:
 
 def run_doctor() -> None:
     """Run all health checks and print results."""
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
     print("💚 CripOS Doctor")
     print("=" * 35)
     print("  Diagnosing system health...\n")
