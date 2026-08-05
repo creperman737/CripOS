@@ -45,14 +45,22 @@ Endi hujjat yozishni deyarli to'xtatamiz. Endi **CripOS 0.1 Alpha Release Checkl
 ### Quality
 
 - [x] Unit Tests
-- [ ] Integration Tests
+- [x] Integration Tests
 - [ ] Alpha Testing
 
 ### Release
 
-- [ ] Build ISO
-- [ ] Release Notes
+- [x] Build ISO
+- [x] Release Notes
 - [ ] GitHub Release
+
+### Real World Testing (Sprint 3)
+
+- [ ] QEMU'da Live ISO yuklanishi
+- [ ] VirtualBox'da o'rnatish
+- [ ] VMware'da sinash
+- [ ] Kamida 3 xil apparat konfiguratsiyasi
+- [ ] Topilgan xatolarni tuzatish
 
 ---
 

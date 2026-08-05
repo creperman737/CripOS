@@ -104,26 +104,31 @@ class InstallerWindow:
 
     def start_install(self) -> None:
         """Start the installation process."""
+        install_script = REPO_ROOT / "installer" / "install.sh"
+        if not install_script.exists():
+            self.status_label.config(text="❌ install.sh not found")
+            return
+
         self.status_label.config(text="Installing CripOS...")
         self.progress["value"] = 10
         self.root.update()
 
-        # Simulate installation steps
-        steps = [
-            ("Preparing disk...", 25),
-            ("Copying files...", 50),
-            ("Installing packages...", 75),
-            ("Configuring system...", 90),
-            ("Finalizing...", 100),
-        ]
-        for message, progress in steps:
-            self.status_label.config(text=message)
-            self.progress["value"] = progress
-            self.root.update()
-            self.root.after(500)
-
-        self.status_label.config(text="Installation complete! Please reboot.")
-        self.progress["value"] = 100
+        try:
+            result = subprocess.run(
+                ["bash", str(install_script)],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            if result.returncode == 0:
+                self.status_label.config(text="✅ Installation complete! Please reboot.")
+                self.progress["value"] = 100
+            else:
+                self.status_label.config(text="❌ Installation failed (run as root?)")
+                self.progress["value"] = 0
+        except FileNotFoundError:
+            self.status_label.config(text="❌ bash not found")
+            self.progress["value"] = 0
 
 
 def run_installer() -> None:
