@@ -88,7 +88,11 @@ class WallpaperTests(unittest.TestCase):
         self.assertGreater(len(wps), 0)
 
     def test_set_wallpaper(self) -> None:
-        self.assertTrue(set_wallpaper("default"))
+        # Pick the first available wallpaper (the preset list may change)
+        available = list_wallpapers()
+        self.assertTrue(available, "Expected at least one wallpaper")
+        self.assertTrue(set_wallpaper(available[0]))
+        self.assertEqual(get_current_wallpaper(), available[0])
 
     def test_set_wallpaper_invalid(self) -> None:
         self.assertFalse(set_wallpaper("nonexistent-wallpaper-xyz"))

@@ -9,7 +9,7 @@ THEMES_DIR = Path("/usr/share/themes")
 CRIP_THEMES = Path(__file__).resolve().parents[1] / "themes"
 THEME_CONFIG = Path("/etc/cripos/theme.json")
 
-AVAILABLE_THEMES = ["crip-dark", "crip-light", "minecraft"]
+AVAILABLE_THEMES = ["crip-dark", "crip-light", "cripgreen", "minecraft"]
 
 
 def load_theme_config() -> dict:
@@ -87,6 +87,16 @@ def get_theme_colors(name: str | None = None) -> dict:
             "primary": "#1F883D",
             "secondary": "#2EA043",
             "danger": "#CF222E",
+        },
+        "cripgreen": {
+            "bg": "#0A1F0A",
+            "surface": "#122A12",
+            "border": "#1E3A1E",
+            "text": "#E8F5E9",
+            "muted": "#81C784",
+            "primary": "#4CAF50",
+            "secondary": "#2E7D32",
+            "danger": "#F44336",
         },
         "minecraft": {
             "bg": "#1D1D1D",

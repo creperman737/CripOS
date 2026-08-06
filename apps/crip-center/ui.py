@@ -218,6 +218,7 @@ class CenterWindow:
         theme_options = [
             ("crip-dark", self.strings["theme_crip_dark"]),
             ("crip-light", self.strings["theme_crip_light"]),
+            ("cripgreen", "Crip Green"),
             ("minecraft", self.strings["theme_minecraft"]),
         ]
         for value, label in theme_options:
