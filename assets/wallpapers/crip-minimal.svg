@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0D1117"/>
+    <stop offset="100%" stop-color="#161B22"/>
+  </linearGradient>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <!-- Debian style spiral -->
+  <circle cx="960" cy="480" r="260" fill="none" stroke="#39D353" stroke-width="2" opacity="0.8"/>
+  <circle cx="960" cy="480" r="210" fill="none" stroke="#39D353" stroke-width="2" opacity="0.6"/>
+  <circle cx="960" cy="480" r="160" fill="none" stroke="#39D353" stroke-width="2" opacity="0.4"/>
+  <circle cx="960" cy="480" r="110" fill="none" stroke="#39D353" stroke-width="2" opacity="0.3"/>
+  <circle cx="960" cy="480" r="60" fill="none" stroke="#39D353" stroke-width="2" opacity="0.2"/>
+  <circle cx="960" cy="480" r="20" fill="#39D353" opacity="0.8"/>
+
+  <!-- Connecting lines -->
+  <line x1="220" y1="900" x2="960" y2="480" stroke="#2EA043" stroke-width="1" opacity="0.3"/>
+  <line x1="620" y1="1000" x2="960" y2="480" stroke="#2EA043" stroke-width="1" opacity="0.2"/>
+  <line x1="1300" y1="1000" x2="960" y2="480" stroke="#2EA043" stroke-width="1" opacity="0.2"/>
+  <line x1="1700" y1="900" x2="960" y2="480" stroke="#2EA043" stroke-width="1" opacity="0.3"/>
+
+  <text x="960" y="860" text-anchor="middle" font-family="Segoe UI, Arial" font-size="56" font-weight="bold" fill="#F0F6FC">CripOS</text>
+  <text x="960" y="910" text-anchor="middle" font-family="Segoe UI, Arial" font-size="20" fill="#8B949E">Minimal • Focus • Simple</text>
+</svg>

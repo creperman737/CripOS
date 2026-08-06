@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D1117"/>
+      <stop offset="50%" stop-color="#161B22"/>
+      <stop offset="100%" stop-color="#0D1117"/>
+    </linearGradient>
+    <linearGradient id="codeGlow" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#39D353" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#39D353" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <!-- Terminal window -->
+  <rect x="360" y="180" width="1200" height="620" rx="12" fill="#010409" stroke="#30363D" stroke-width="2"/>
+  <rect x="360" y="180" width="1200" height="44" rx="12" fill="#161B22"/>
+  <circle cx="396" cy="202" r="8" fill="#F85149"/>
+  <circle cx="420" cy="202" r="8" fill="#F0B429"/>
+  <circle cx="444" cy="202" r="8" fill="#39D353"/>
+  <text x="960" y="210" text-anchor="middle" font-family="Consolas, monospace" font-size="16" fill="#8B949E">crip@cripos: ~</text>
+
+  <!-- Code lines -->
+  <text x="400" y="280" font-family="Consolas, monospace" font-size="22" fill="#FF7B72">import</text>
+  <text x="500" y="280" font-family="Consolas, monospace" font-size="22" fill="#79C0FF">os</text>
+  <text x="400" y="330" font-family="Consolas, monospace" font-size="22" fill="#FF7B72">from</text>
+  <text x="460" y="330" font-family="Consolas, monospace" font-size="22" fill="#79C0FF">sdk.cripapi</text>
+  <text x="640" y="330" font-family="Consolas, monospace" font-size="22" fill="#FF7B72">import</text>
+  <text x="700" y="330" font-family="Consolas, monospace" font-size="22" fill="#79C0FF">system_info</text>
+  <text x="400" y="380" font-family="Consolas, monospace" font-size="22" fill="#FF7B72">def</text>
+  <text x="460" y="380" font-family="Consolas, monospace" font-size="22" fill="#D2A8FF">main</text>
+  <text x="530" y="380" font-family="Consolas, monospace" font-size="22" fill="#F0F6FC">():</text>
+  <text x="440" y="430" font-family="Consolas, monospace" font-size="22" fill="#FF7B72">print</text>
+  <text x="510" y="430" font-family="Consolas, monospace" font-size="22" fill="#F0F6FC">(</text>
+  <text x="530" y="430" font-family="Consolas, monospace" font-size="22" fill="#A5D6FF">"Hello CripOS!"</text>
+  <text x="730" y="430" font-family="Consolas, monospace" font-size="22" fill="#F0F6FC">)</text>
+  <text x="440" y="500" font-family="Consolas, monospace" font-size="22" fill="#79C0FF">$ </text>
+  <text x="480" y="500" font-family="Consolas, monospace" font-size="22" fill="#F0F6FC">crip-info</text>
+
+  <!-- Output -->
+  <text x="480" y="550" font-family="Consolas, monospace" font-size="22" fill="#39D353">💚 CripOS 0.1 Alpha</text>
+  <text x="480" y="600" font-family="Consolas, monospace" font-size="22" fill="#8B949E">Name: CripOS</text>
+  <text x="480" y="640" font-family="Consolas, monospace" font-size="22" fill="#8B949E">Version: Alpha 0.1</text>
+  <text x="480" y="680" font-family="Consolas, monospace" font-size="22" fill="#8B949E">Base: Debian 13 (Trixie)</text>
+  <text x="480" y="720" font-family="Consolas, monospace" font-size="22" fill="#39D353">$ </text>
+
+  <!-- Bottom bar -->
+  <rect y="1040" width="1920" height="40" fill="#161B22"/>
+  <text x="960" y="1066" text-anchor="middle" font-family="Segoe UI, Arial" font-size="18" fill="#39D353">Code. Build. Play.</text>
+</svg>

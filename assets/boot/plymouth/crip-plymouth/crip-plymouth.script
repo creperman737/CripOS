@@ -1,0 +1,47 @@
+/* CripOS Plymouth Boot Animation */
+
+Logo = Image("crip-logo.png");
+LogoX = Window.GetWidth() / 2 - Logo.GetWidth() / 2;
+LogoY = Window.GetHeight() / 2 - Logo.GetHeight() / 2 - 40;
+
+sprite_logo = Sprite();
+sprite_logo.SetImage(Logo);
+sprite_logo.SetX(LogoX);
+sprite_logo.SetY(LogoY);
+sprite_logo.SetOpacity(0);
+
+/* Fade in animation */
+for (i = 0; i < 100; i++) {
+    sprite_logo.SetOpacity(i / 100.0);
+    Pause(10);
+}
+
+/* Show text */
+label = Text("CripOS");
+label.SetFontName("Segoe UI");
+label.SetFontSize(32);
+label.SetFontBold(true);
+label.SetColor(0.22, 0.83, 0.33);  /* #39D353 */
+labelX = Window.GetWidth() / 2 - label.GetWidth() / 2;
+labelY = LogoY + Logo.GetHeight() + 20;
+label.SetX(labelX);
+label.SetY(labelY);
+label.SetOpacity(0);
+
+/* Fade in text */
+for (i = 0; i < 100; i++) {
+    label.SetOpacity(i / 100.0);
+    Pause(10);
+}
+
+/* Loading spinner */
+spinner = Sprite();
+spinner.SetPosition(Window.GetWidth() / 2 - 16, labelY + 60);
+spinner.SetOpacity(0.8);
+
+/* Wait for boot */
+message = Text("Loading...");
+message.SetFontName("Segoe UI");
+message.SetFontSize(16);
+message.SetColor(0.55, 0.58, 0.62);  /* #8B949E */
+message.SetPosition(Window.GetWidth() / 2 - message.GetWidth() / 2, labelY + 100);

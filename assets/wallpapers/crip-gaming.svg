@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D1117"/>
+      <stop offset="50%" stop-color="#1A1B22"/>
+      <stop offset="100%" stop-color="#0D1117"/>
+    </linearGradient>
+    <linearGradient id="rgbLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#39D353"/>
+      <stop offset="33%" stop-color="#79C0FF"/>
+      <stop offset="66%" stop-color="#D2A8FF"/>
+      <stop offset="100%" stop-color="#39D353"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <!-- Speed lines -->
+  <line x1="0" y1="200" x2="1920" y2="200" stroke="#39D353" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="300" x2="1920" y2="300" stroke="#79C0FF" stroke-width="1" opacity="0.2"/>
+  <line x1="0" y1="400" x2="1920" y2="400" stroke="#D2A8FF" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="500" x2="1920" y2="500" stroke="#39D353" stroke-width="1" opacity="0.2"/>
+  <line x1="0" y1="600" x2="1920" y2="600" stroke="#79C0FF" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="700" x2="1920" y2="700" stroke="#D2A8FF" stroke-width="1" opacity="0.2"/>
+  <line x1="0" y1="800" x2="1920" y2="800" stroke="#39D353" stroke-width="1" opacity="0.3"/>
+
+  <!-- Center glow -->
+  <circle cx="960" cy="540" r="300" fill="#39D353" opacity="0.05"/>
+  <circle cx="960" cy="540" r="200" fill="#39D353" opacity="0.08"/>
+  <circle cx="960" cy="540" r="100" fill="#39D353" opacity="0.12"/>
+
+  <!-- Game controller -->
+  <rect x="600" y="440" width="720" height="200" rx="100" fill="#161B22" stroke="#39D353" stroke-width="3"/>
+  <rect x="550" y="460" width="80" height="120" rx="30" fill="#161B22" stroke="#39D353" stroke-width="3"/>
+  <rect x="1290" y="460" width="80" height="120" rx="30" fill="#161B22" stroke="#39D353" stroke-width="3"/>
+
+  <!-- D-pad -->
+  <rect x="720" y="500" width="20" height="80" fill="#39D353"/>
+  <rect x="690" y="530" width="80" height="20" fill="#39D353"/>
+
+  <!-- Buttons -->
+  <circle cx="1180" cy="520" r="16" fill="#F85149"/>
+  <circle cx="1190" cy="560" r="16" fill="#79C0FF"/>
+  <circle cx="1140" cy="540" r="16" fill="#F0B429"/>
+  <circle cx="1220" cy="540" r="16" fill="#39D353"/>
+
+  <!-- RGB strip -->
+  <rect x="300" y="900" width="1320" height="8" rx="4" fill="url(#rgbLine)"/>
+
+  <!-- Text -->
+  <text x="960" y="380" text-anchor="middle" font-family="Segoe UI, Arial" font-size="72" font-weight="bold" fill="#F0F6FC">GAMING</text>
+  <text x="960" y="430" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" fill="#39D353">MODE</text>
+  <text x="960" y="860" text-anchor="middle" font-family="Segoe UI, Arial" font-size="22" fill="#8B949E">Ready to Play!</text>
+</svg>

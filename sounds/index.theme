@@ -1,0 +1,4 @@
+[Sound Theme]
+Name=CripOS
+Comment=CripOS Sound Theme
+Directories=startup,shutdown,notification,error,click

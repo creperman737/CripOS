@@ -9,14 +9,12 @@ WALLPAPERS_DIR = Path(__file__).resolve().parents[1] / "assets" / "wallpapers"
 WALLPAPER_CONFIG = Path.home() / ".config" / "cripos" / "wallpaper.json"
 
 DEFAULT_WALLPAPERS = {
-    "default": "wallpaperhome.png",
-    "wallpaper1": "wallpaper1.png",
-    "wallpaper2": "wallpaper2.png",
-    "wallpaper3": "wallpaper3.png",
-    "wallpaper4": "wallpaper4.jpg",
-    "wallpaper5": "wallpaper5.jpg",
-    "wallpaper6": "wallpaper6.png",
-    "wallpaper7": "wallpaper7.png",
+    "crip-forest": "crip-forest.svg",
+    "crip-developer": "crip-developer.svg",
+    "crip-gaming": "crip-gaming.svg",
+    "crip-minimal": "crip-minimal.svg",
+    "crip-inspiration": "crip-inspiration.svg",
+    "crip-mascot": "crip-mascot.svg",
 }
 
 
@@ -66,7 +64,7 @@ def list_wallpapers() -> list[str]:
     """List available wallpaper presets/files."""
     wallpapers = list(DEFAULT_WALLPAPERS.keys())
     if WALLPAPERS_DIR.exists():
-        for pattern in ("*.[pP][nN][gG]", "*.[jJ][pP][gG]", "*.[jJ][pP][eE][gG]"):
+        for pattern in ("*.[sS][vV][gG]", "*.[pP][nN][gG]", "*.[jJ][pP][gG]", "*.[jJ][pP][eE][gG]"):
             for f in WALLPAPERS_DIR.glob(pattern):
                 if f.stem not in wallpapers:
                     wallpapers.append(f.stem)
