@@ -1,0 +1,217 @@
+/* CripGreen - CripOS Cinnamon Theme */
+/* Accent: #2EE66B | Dark: #0B0F0C | Background: #111614 | Hover: #3EFF7C */
+
+window {
+  background-color: #111614;
+  color: #F0F6FC;
+}
+
+window.titlebar {
+  background-color: #0B0F0C;
+  color: #F0F6FC;
+}
+
+button {
+  background-color: #1A211D;
+  color: #F0F6FC;
+  border: 1px solid #2A352E;
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+button:hover {
+  background-color: #2A352E;
+  border-color: #2EE66B;
+}
+
+button:active {
+  background-color: #2EE66B;
+  color: #0B0F0C;
+}
+
+entry {
+  background-color: #0B0F0C;
+  color: #F0F6FC;
+  border: 1px solid #2A352E;
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+entry:focus {
+  border-color: #2EE66B;
+  box-shadow: 0 0 8px rgba(46, 230, 107, 0.3);
+}
+
+label {
+  color: #F0F6FC;
+}
+
+label.muted {
+  color: #8B949E;
+}
+
+menu {
+  background-color: #111614;
+  color: #F0F6FC;
+}
+
+menuitem:hover {
+  background-color: #2EE66B;
+  color: #0B0F0C;
+}
+
+treeview {
+  background-color: #0B0F0C;
+  color: #F0F6FC;
+}
+
+treeview:selected {
+  background-color: #2EE66B;
+  color: #0B0F0C;
+}
+
+scrollbar {
+  background-color: #111614;
+}
+
+scrollbar slider {
+  background-color: #2A352E;
+  border-radius: 4px;
+}
+
+scrollbar slider:hover {
+  background-color: #2EE66B;
+}
+
+checkbutton {
+  color: #F0F6FC;
+}
+
+check {
+  background-color: #0B0F0C;
+  border: 1px solid #2A352E;
+  border-radius: 4px;
+}
+
+check:checked {
+  background-color: #2EE66B;
+  border-color: #2EE66B;
+}
+
+radiobutton {
+  color: #F0F6FC;
+}
+
+radio {
+  background-color: #0B0F0C;
+  border: 1px solid #2A352E;
+  border-radius: 50%;
+}
+
+radio:checked {
+  background-color: #2EE66B;
+  border-color: #2EE66B;
+}
+
+combobox {
+  background-color: #1A211D;
+  color: #F0F6FC;
+  border: 1px solid #2A352E;
+  border-radius: 8px;
+}
+
+notebook {
+  background-color: #0B0F0C;
+}
+
+notebook tab {
+  background-color: #111614;
+  color: #8B949E;
+  padding: 6px 12px;
+}
+
+notebook tab:checked {
+  background-color: #1A211D;
+  color: #F0F6FC;
+  border-bottom: 2px solid #2EE66B;
+}
+
+progressbar {
+  background-color: #1A211D;
+  border-radius: 4px;
+}
+
+progressbar progress {
+  background-color: #2EE66B;
+  border-radius: 4px;
+}
+
+scale trough {
+  background-color: #1A211D;
+  border-radius: 4px;
+}
+
+scale highlight {
+  background-color: #2EE66B;
+  border-radius: 4px;
+}
+
+scale slider {
+  background-color: #F0F6FC;
+  border-radius: 50%;
+}
+
+tooltip {
+  background-color: #111614;
+  color: #F0F6FC;
+  border: 1px solid #2A352E;
+  border-radius: 6px;
+}
+
+statusbar {
+  background-color: #0B0F0C;
+  color: #8B949E;
+}
+
+headerbar {
+  background-color: #0B0F0C;
+  color: #F0F6FC;
+  border-bottom: 1px solid #2A352E;
+}
+
+/* Cinnamon panel */
+#panel {
+  background-color: #0B0F0C;
+  color: #F0F6FC;
+}
+
+#panel .panel-button {
+  color: #F0F6FC;
+}
+
+#panel .panel-button:hover {
+  background-color: #2A352E;
+}
+
+/* Menu */
+#menu {
+  background-color: #111614;
+  border: 1px solid #2A352E;
+  border-radius: 12px;
+}
+
+/* Applet hover */
+.applet-box:hover {
+  background-color: #2A352E;
+}
+
+/* Window list */
+.window-list-item-box {
+  background-color: #1A211D;
+  border-radius: 6px;
+}
+
+.window-list-item-box:active {
+  background-color: #2EE66B;
+  color: #0B0F0C;
+}

@@ -8,88 +8,25 @@
 
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #0D1117 0%, #161B22 60%, #0D2818 100%);
+      background: linear-gradient(135deg, #0B0F0C 0%, #111614 50%, #0B0F0C 100%);
       color: #F0F6FC;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       overflow: hidden;
+      position: relative;
     }
 
-    .login-box {
-      background: rgba(22, 27, 34, 0.95);
-      border: 1px solid #30363D;
-      border-radius: 16px;
-      padding: 48px;
-      width: 380px;
-      text-align: center;
-      box-shadow: 0 0 60px rgba(57, 211, 83, 0.1);
-    }
-
-    .avatar {
-      width: 96px;
-      height: 96px;
-      background: #39D353;
-      border-radius: 50%;
-      margin: 0 auto 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 40px;
-      font-weight: bold;
-      color: #0D1117;
-    }
-
-    h1 {
-      font-size: 28px;
-      color: #39D353;
-      margin-bottom: 4px;
-    }
-
-    .subtitle {
-      color: #8B949E;
-      font-size: 14px;
-      margin-bottom: 32px;
-    }
-
-    input[type="password"] {
-      width: 100%;
-      padding: 14px;
-      background: #0D1117;
-      border: 1px solid #30363D;
-      border-radius: 8px;
-      color: #F0F6FC;
-      font-size: 16px;
-      text-align: center;
-      outline: none;
-      margin-bottom: 16px;
-    }
-
-    input[type="password"]:focus {
-      border-color: #39D353;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #39D353;
-      border: none;
-      border-radius: 8px;
-      color: #0D1117;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #2EA043;
-    }
-
-    .hint {
-      margin-top: 20px;
-      color: #8B949E;
-      font-size: 12px;
+    /* Cyber forest background glow */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(46, 230, 107, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(46, 230, 107, 0.05) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .splash {
@@ -102,19 +39,118 @@
       font-size: 18px;
       text-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
     }
+
+    /* Glassmorphism login box */
+    .login-box {
+      background: rgba(17, 22, 20, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(46, 230, 107, 0.2);
+      border-radius: 20px;
+      padding: 48px;
+      width: 400px;
+      text-align: center;
+      box-shadow:
+        0 0 60px rgba(46, 230, 107, 0.1),
+        inset 0 0 30px rgba(46, 230, 107, 0.03);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Spiral logo */
+    .logo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #2EE66B, #3EFF7C, #2EE66B);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+      color: #0B0F0C;
+      box-shadow: 0 0 30px rgba(46, 230, 107, 0.4);
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #2EE66B;
+      margin-bottom: 4px;
+      text-shadow: 0 0 20px rgba(46, 230, 107, 0.3);
+    }
+
+    .subtitle {
+      color: #8B949E;
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      background: rgba(11, 15, 12, 0.8);
+      border: 1px solid rgba(46, 230, 107, 0.2);
+      border-radius: 10px;
+      color: #F0F6FC;
+      font-size: 16px;
+      text-align: center;
+      outline: none;
+      margin-bottom: 12px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #2EE66B;
+      box-shadow: 0 0 12px rgba(46, 230, 107, 0.2);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #2EE66B, #3EFF7C);
+      border: none;
+      border-radius: 10px;
+      color: #0B0F0C;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(46, 230, 107, 0.3);
+    }
+
+    .hint {
+      margin-top: 20px;
+      color: #8B949E;
+      font-size: 12px;
+    }
+
+    .hint .green {
+      color: #2EE66B;
+    }
   </style>
 </head>
 <body>
   <div class="splash">✨ Never Gives Up!</div>
   <div class="login-box">
-    <div class="avatar">💚</div>
+    <div class="logo">💚</div>
     <h1>CripOS</h1>
     <div class="subtitle">Alpha 0.1 · Creeper</div>
     <form method="post" action="/lightdm">
-      <input type="password" name="password" placeholder="Password" autofocus>
-      <button type="submit">Sign In</button>
+      <input type="text" name="username" placeholder="Username" autofocus>
+      <input type="password" name="password" placeholder="Password">
+      <button type="submit">Login</button>
     </form>
-    <div class="hint">CripOS · Never Give Up.</div>
+    <div class="hint">CripOS · <span class="green">Never Give Up.</span></div>
   </div>
 </body>
 </html>

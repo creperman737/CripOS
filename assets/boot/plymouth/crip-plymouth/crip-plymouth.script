@@ -1,47 +1,85 @@
-/* CripOS Plymouth Boot Animation */
+/* CripOS Plymouth Boot Animation - Neon Spiral */
 
-Logo = Image("crip-logo.png");
-LogoX = Window.GetWidth() / 2 - Logo.GetWidth() / 2;
-LogoY = Window.GetHeight() / 2 - Logo.GetHeight() / 2 - 40;
+/* Colors */
+green = Color(0.18, 0.90, 0.42);  /* #2EE66B */
+dark = Color(0.04, 0.06, 0.05);   /* #0B0F0C */
+muted = Color(0.55, 0.58, 0.62);  /* #8B949E */
 
-sprite_logo = Sprite();
-sprite_logo.SetImage(Logo);
-sprite_logo.SetX(LogoX);
-sprite_logo.SetY(LogoY);
-sprite_logo.SetOpacity(0);
+/* Background */
+bg = Rectangle();
+bg.SetColor(dark);
+bg.SetPosition(0, 0);
+bg.SetSize(Window.GetWidth(), Window.GetHeight());
 
-/* Fade in animation */
+/* Spiral logo */
+spiral = Sprite();
+spiral.SetImage(Image("crip-logo.png"));
+spiral.SetPosition(
+    Window.GetWidth() / 2 - spiral.GetWidth() / 2,
+    Window.GetHeight() / 2 - spiral.GetHeight() / 2 - 40
+);
+spiral.SetOpacity(0);
+
+/* Fade in spiral */
 for (i = 0; i < 100; i++) {
-    sprite_logo.SetOpacity(i / 100.0);
+    spiral.SetOpacity(i / 100.0);
     Pause(10);
 }
 
-/* Show text */
-label = Text("CripOS");
-label.SetFontName("Segoe UI");
-label.SetFontSize(32);
-label.SetFontBold(true);
-label.SetColor(0.22, 0.83, 0.33);  /* #39D353 */
-labelX = Window.GetWidth() / 2 - label.GetWidth() / 2;
-labelY = LogoY + Logo.GetHeight() + 20;
-label.SetX(labelX);
-label.SetY(labelY);
-label.SetOpacity(0);
+/* Spiral rotation animation */
+for (i = 0; i < 360; i += 2) {
+    spiral.SetRotation(i);
+    Pause(5);
+}
 
-/* Fade in text */
+/* Title text */
+title = Text("CripOS");
+title.SetFontName("Segoe UI");
+title.SetFontSize(48);
+title.SetFontBold(true);
+title.SetColor(green);
+title.SetPosition(
+    Window.GetWidth() / 2 - title.GetWidth() / 2,
+    Window.GetHeight() / 2 + 40
+);
+title.SetOpacity(0);
+
+/* Fade in title */
 for (i = 0; i < 100; i++) {
-    label.SetOpacity(i / 100.0);
+    title.SetOpacity(i / 100.0);
     Pause(10);
 }
 
-/* Loading spinner */
-spinner = Sprite();
-spinner.SetPosition(Window.GetWidth() / 2 - 16, labelY + 60);
-spinner.SetOpacity(0.8);
+/* Subtitle */
+subtitle = Text("Built on Debian. Designed for You.");
+subtitle.SetFontName("Segoe UI");
+subtitle.SetFontSize(18);
+subtitle.SetColor(muted);
+subtitle.SetPosition(
+    Window.GetWidth() / 2 - subtitle.GetWidth() / 2,
+    Window.GetHeight() / 2 + 100
+);
+subtitle.SetOpacity(0);
 
-/* Wait for boot */
-message = Text("Loading...");
-message.SetFontName("Segoe UI");
-message.SetFontSize(16);
-message.SetColor(0.55, 0.58, 0.62);  /* #8B949E */
-message.SetPosition(Window.GetWidth() / 2 - message.GetWidth() / 2, labelY + 100);
+/* Fade in subtitle */
+for (i = 0; i < 100; i++) {
+    subtitle.SetOpacity(i / 100.0);
+    Pause(10);
+}
+
+/* Loading bar */
+bar_bg = Rectangle();
+bar_bg.SetColor(Color(0.10, 0.13, 0.11));
+bar_bg.SetPosition(Window.GetWidth() / 2 - 150, Window.GetHeight() / 2 + 140);
+bar_bg.SetSize(300, 8);
+
+bar_fill = Rectangle();
+bar_fill.SetColor(green);
+bar_fill.SetPosition(Window.GetWidth() / 2 - 150, Window.GetHeight() / 2 + 140);
+bar_fill.SetSize(0, 8);
+
+/* Animate loading bar */
+for (i = 0; i <= 100; i += 2) {
+    bar_fill.SetSize(i * 3, 8);
+    Pause(20);
+}
