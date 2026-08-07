@@ -30,6 +30,10 @@ COMMANDS = {
     "theme": "Switch theme (crip theme <name>)",
     "wallpaper": "Set wallpaper (crip wallpaper <name>)",
     "language": "Set language (crip language <code>)",
+    "terminal": "Open Crip Terminal",
+    "monitor": "Open Crip Monitor",
+    "installer": "Open Crip Installer",
+    "launcher": "Open Crip Launcher",
 }
 
 
@@ -246,6 +250,30 @@ def main() -> None:
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         mod.run_files()
+    elif cmd == "terminal":
+        path = REPO_ROOT / "apps" / "crip-terminal" / "main.py"
+        spec = importlib.util.spec_from_file_location("crip_terminal_main", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        mod.run_terminal()
+    elif cmd == "monitor":
+        path = REPO_ROOT / "apps" / "crip-monitor" / "main.py"
+        spec = importlib.util.spec_from_file_location("crip_monitor_main", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        mod.run_monitor()
+    elif cmd == "installer":
+        path = REPO_ROOT / "apps" / "crip-installer" / "main.py"
+        spec = importlib.util.spec_from_file_location("crip_installer_main", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        mod.run_installer()
+    elif cmd == "launcher":
+        path = REPO_ROOT / "apps" / "crip-launcher" / "launcher.py"
+        spec = importlib.util.spec_from_file_location("crip_launcher_main", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        mod.launch_launcher()
     else:
         print(f"Unknown command: '{cmd}'")
         print("Run 'crip help' to see available commands.")

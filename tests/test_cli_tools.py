@@ -202,6 +202,48 @@ class CripCliTests(unittest.TestCase):
             crip._cmd_language(["xx"])
         self.assertIn("❌", buffer.getvalue())
 
+    def test_new_app_commands_exist(self) -> None:
+        """Verify terminal, monitor, installer, launcher commands are registered."""
+        for cmd in ("terminal", "monitor", "installer", "launcher"):
+            self.assertIn(cmd, crip.COMMANDS)
+
+    def test_theme_list_includes_cripgreen(self) -> None:
+        from system.theme_manager import list_themes
+        self.assertIn("cripgreen", list_themes())
+
+    def test_wallpaper_list_includes_svg(self) -> None:
+        from system.wallpaper_manager import list_wallpapers
+        wps = list_wallpapers()
+        self.assertIn("crip-forest", wps)
+        self.assertIn("crip-gaming", wps)
+
+    def test_theme_set_cripgreen(self) -> None:
+        from system.theme_manager import set_theme, get_current_theme
+        self.assertTrue(set_theme("cripgreen"))
+        self.assertEqual(get_current_theme(), "cripgreen")
+
+
+class CripInstallerTests(unittest.TestCase):
+    def test_installer_script_exists(self) -> None:
+        install_script = REPO_ROOT / "installer" / "install.sh"
+        self.assertTrue(install_script.exists())
+
+    def test_installer_gui_exists(self) -> None:
+        installer_gui = REPO_ROOT / "apps" / "crip-installer" / "main.py"
+        self.assertTrue(installer_gui.exists())
+
+    def test_build_iso_script_exists(self) -> None:
+        build_script = REPO_ROOT / "scripts" / "build-iso.sh"
+        self.assertTrue(build_script.exists())
+
+    def test_qemu_test_script_exists(self) -> None:
+        qemu_script = REPO_ROOT / "scripts" / "test-qemu.sh"
+        self.assertTrue(qemu_script.exists())
+
+    def test_virtualbox_test_script_exists(self) -> None:
+        vb_script = REPO_ROOT / "scripts" / "test-virtualbox.sh"
+        self.assertTrue(vb_script.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

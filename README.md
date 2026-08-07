@@ -13,6 +13,44 @@ Vision: Create a fast, modern, and user-friendly Debian-based Linux distribution
 - **Codename:** Creeper
 - **Status:** 🚧 Alpha Development
 
+## 📊 Project Dashboard
+
+```text
+CripOS Roadmap
+
+v0.1 Alpha (Creeper)    ████████▏ 82%
+v0.2 Alpha              ░░░░░░░░░ 0%
+v0.3 Beta               ░░░░░░░░░ 0%
+v1.0 Stable             ░░░░░░░░░ 0%
+```
+
+### 📈 Statistics
+
+```text
+Commits      430+
+Tests        78/78 ✅
+Themes       4
+Wallpapers   6
+CLI Commands 22
+Desktop Apps 6
+Base         Debian 13
+Desktop      Cinnamon
+Status       Alpha
+```
+
+### 🏆 Progress by Area
+
+```text
+Foundation        ██████████ 100%
+Documentation    ██████████ 100%
+Core Desktop    ██████████ 100%
+Core System    ██████████ 100%
+CLI            ██████████ 100%
+Themes/UI      ██████████ 100%
+Testing        ██████████ 100%
+Installer      ██████████ 100%
+```
+
 ## Features
 
 - ✅ Boot & Login System
@@ -23,8 +61,9 @@ Vision: Create a fast, modern, and user-friendly Debian-based Linux distribution
 - ✅ Crip Update
 - ✅ Crip Installer
 - ✅ Developer SDK (cripapi, cripui, cripwidgets, cripthemes)
-- 🚧 Crip Store
-- 🚧 Crip Files
+- ✅ Crip Store
+- ✅ Crip Files
+- ✅ Crip Monitor
 - 🚧 Gaming Mode (planned)
 
 ## Installation
@@ -83,12 +122,13 @@ CripOS/
 
 ## Tests
 
-**41+ automated tests** covering:
+**78/78 automated tests passing** covering:
 
 - Application APIs
 - System modules
 - SDK packages
 - Welcome wizard
+- CLI tools
 - JSON validation
 - Python syntax
 
