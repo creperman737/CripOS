@@ -1,0 +1,41 @@
+# CripOS Desktop packages
+cinnamon-desktop-environment
+cinnamon-session
+cinnamon-control-center
+cinnamon-screensaver
+cinnamon-settings-daemon
+lightdm
+lightdm-gtk-greeter
+
+# Core utilities
+python3
+python3-tk
+python3-pip
+python3-venv
+git
+curl
+wget
+vim
+nano
+nano
+fonts-noto-color-emoji
+network-manager
+network-manager-gnome
+pulseaudio
+pulseaudio-utils
+pavucontrol
+</arg_value>
+<task_progress>
+- [x] CLI 100% complete
+- [x] Core Desktop 100%
+- [x] Verify Core System completeness
+- [x] Add installer & ISO builder tests
+- [x] Update README statistics
+- [x] Add real sound file
+- [x] Correct README accuracy (CLI count, ISO status)
+- [x] Update release checklist
+- [ ] Create live-build config for real ISO
+- [ ] Add .desktop files for apps
+- [ ] Update build-iso.sh to use live-build
+- [ ] Final verification
+</task_progress></tool_call>

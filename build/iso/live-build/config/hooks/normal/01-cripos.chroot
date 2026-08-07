@@ -1,0 +1,43 @@
+#!/bin/bash
+# CripOS post-install hook
+# This runs inside the chroot during live-build
+
+set -e
+
+# Install CripOS CLI as system command
+# (includes.chroot files are already copied into the chroot by live-build)
+ln -sf /opt/cripos/tools/crip.py /usr/local/bin/crip
+
+# Install os-release
+cat > /etc/os-release <<'OSRELEASE'
+PRETTY_NAME="CripOS Alpha 0.1 (Creeper)"
+NAME="CripOS"
+VERSION_ID="0.1-alpha"
+VERSION_CODENAME="Creeper"
+ID=cripos
+ID_LIKE=debian
+HOME_URL="https://github.com/creperman737/CripOS"
+SUPPORT_URL="https://github.com/creperman737/CripOS/issues"
+BUG_REPORT_URL="https://github.com/creperman737/CripOS/issues"
+OSRELEASE
+
+# Set default theme
+echo "cripgreen" > /etc/cripos/theme
+
+# Set default wallpaper
+echo "crip-forest" > /etc/cripos/wallpaper
+
+# Set default language
+echo "en" > /etc/cripos/language
+
+# Create CripOS config directory
+mkdir -p /etc/cripos
+
+# Enable LightDM
+systemctl enable lightdm 2>/dev/null || true
+
+# Clean up
+rm -rf /tmp/*
+
+echo "CripOS post-install hook completed."
+</arg_value></tool_call>

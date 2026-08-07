@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Terminal
+Comment=Terminal emulator
+Exec=/opt/cripos/tools/crip.py terminal
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;
+StartupNotify=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Files
+Comment=File manager
+Exec=/opt/cripos/tools/crip.py files
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;FileManager;
+StartupNotify=true

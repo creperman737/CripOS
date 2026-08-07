@@ -32,7 +32,7 @@ Tests        78/78 ✅
 Themes       4
 Wallpapers   6
 CLI Commands 18
-Desktop Apps 6
+Desktop Apps 8
 Base         Debian 13
 Desktop      Cinnamon
 Status       Alpha
@@ -49,7 +49,7 @@ CLI            ██████████ 100%
 Themes/UI      ██████████ 100%
 Testing        ██████████ 100%
 Installer      ██████████ 100%
-ISO Build      ██████░░░░ 60%
+ISO Build      █████████░ 80%
 ```
 
 ## Features

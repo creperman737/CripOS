@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Store
+Comment=Application store
+Exec=/opt/cripos/tools/crip.py store
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;
+StartupNotify=true

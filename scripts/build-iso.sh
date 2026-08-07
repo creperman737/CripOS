@@ -3,106 +3,100 @@ set -euo pipefail
 
 echo "================================="
 echo "      CripOS ISO Builder"
+echo "      (live-build based)"
 echo "================================="
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="$REPO_ROOT/build/iso"
-WORK_DIR="$BUILD_DIR/work"
+LIVE_BUILD_DIR="$BUILD_DIR/live-build"
 OUTPUT_ISO="$BUILD_DIR/cripos-alpha.iso"
 VERSION="0.1-alpha"
 CODENAME="Creeper"
 
 # Check for required tools
-for tool in mkisofs xorriso; do
+for tool in lb xorriso; do
   if ! command -v "$tool" &>/dev/null; then
-    echo "ERROR: $tool is not installed. Please install it first."
+    echo "ERROR: $tool is not installed."
+    echo "Install with: sudo apt install live-build xorriso"
     exit 1
   fi
 done
 
-echo "Creating build directories..."
-rm -rf "$WORK_DIR"
-mkdir -p "$WORK_DIR"
+echo "Setting up live-build config..."
+rm -rf "$LIVE_BUILD_DIR"
+mkdir -p "$LIVE_BUILD_DIR"
 
-echo "Copying CripOS files..."
-cp -a "$REPO_ROOT"/. "$WORK_DIR"/
+# Copy live-build config
+cp -a "$REPO_ROOT/build/iso/live-build/config" "$LIVE_BUILD_DIR/config"
 
-echo "Setting up boot structure..."
-mkdir -p "$WORK_DIR/boot/grub"
-mkdir -p "$WORK_DIR/boot/plymouth"
+# Copy CripOS source code into includes.chroot
+echo "Copying CripOS source code..."
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/opt/cripos"
+cp -a "$REPO_ROOT"/. "$LIVE_BUILD_DIR/config/includes.chroot/opt/cripos/"
 
-# Plymouth theme
-cat > "$WORK_DIR/boot/plymouth/cripos.plymouth" <<'EOF'
-[Plymouth Theme]
-Name=CripOS
-Description=CripOS Boot Splash
-ModuleName=script
-[script]
-ImageDir=/usr/share/plymouth/themes/cripos
-ScriptFile=/usr/share/plymouth/themes/cripos/cripos.script
-EOF
+# Copy themes
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/themes"
+cp -a "$REPO_ROOT/themes/." "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/themes/"
 
-cat > "$WORK_DIR/boot/plymouth/cripos.script" <<'EOF'
-# CripOS Plymouth boot script
-fun = 0;
-window.SetBackgroundColor (0.05, 0.07, 0.09);
-logo = Image ("cripos-logo.png");
-logo_sprite = Sprite (logo);
-logo_sprite.SetX (Window.GetWidth () / 2 - logo.GetWidth () / 2);
-logo_sprite.SetY (Window.GetHeight () / 2 - logo.GetHeight () / 2);
-EOF
+# Copy wallpapers
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/backgrounds/cripos"
+cp -a "$REPO_ROOT/assets/wallpapers/." "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/backgrounds/cripos/"
 
-# GRUB config with branding
-cat > "$WORK_DIR/boot/grub/grub.cfg" <<EOF
-set timeout=5
-set default=0
-set menu_color_normal=cyan/blue
-set menu_color_highlight=white/blue
+# Copy icons
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/icons/cripos"
+cp -a "$REPO_ROOT/assets/icons/." "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/icons/cripos/"
 
-menuentry "CripOS $VERSION ($CODENAME)" {
-    linux /boot/vmlinuz root=/dev/sda1 ro quiet splash
-    initrd /boot/initrd.img
-}
+# Copy Plymouth theme
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/plymouth/themes/cripos"
+cp -a "$REPO_ROOT/assets/boot/plymouth/crip-plymouth/." "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/plymouth/themes/cripos/"
 
-menuentry "CripOS Recovery Mode" {
-    linux /boot/vmlinuz root=/dev/sda1 ro single
-    initrd /boot/initrd.img
-}
+# Copy sounds
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/sounds/cripos"
+cp -a "$REPO_ROOT/sounds/." "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/sounds/cripos/"
 
-menuentry "Memory Test" {
-    linux /boot/memtest86+
-}
-EOF
+# Copy login theme
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/lightdm/crip-login"
+cp -a "$REPO_ROOT/assets/login/lightdm/crip-login/." "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/lightdm/crip-login/"
 
-# OS release branding
-cat > "$WORK_DIR/etc/os-release" <<EOF
-PRETTY_NAME="CripOS $VERSION ($CODENAME)"
-NAME="CripOS"
-VERSION_ID="$VERSION"
-VERSION_CODENAME="$CODENAME"
-ID=cripos
-ID_LIKE=debian
-HOME_URL="https://github.com/creperman737/CripOS"
-SUPPORT_URL="https://github.com/creperman737/CripOS/issues"
-BUG_REPORT_URL="https://github.com/creperman737/CripOS/issues"
-EOF
+# Copy branding
+mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/etc/cripos"
+cp "$REPO_ROOT/branding/os-release" "$LIVE_BUILD_DIR/config/includes.chroot/etc/cripos/os-release"
+cp "$REPO_ROOT/branding/version.txt" "$LIVE_BUILD_DIR/config/includes.chroot/etc/cripos/version"
 
-echo "Building ISO image..."
-xorriso -as mkisofs \
-  -o "$OUTPUT_ISO" \
-  -V "CripOS $VERSION" \
-  -J -R \
-  -b boot/grub/grub.cfg \
-  -no-emul-boot \
-  -boot-load-size 4 \
-  -boot-info-table \
-  "$WORK_DIR"
+# Configure live-build
+echo "Configuring live-build..."
+cd "$LIVE_BUILD_DIR"
 
-echo "Generating SHA256 checksum..."
-(cd "$BUILD_DIR" && sha256sum cripos-alpha.iso > cripos-alpha.iso.sha256)
+lb config \
+  --distribution trixie \
+  --debian-installer live \
+  --archive-areas "main contrib non-free" \
+  --architectures amd64 \
+  --binary-images iso-hybrid \
+  --bootappend-live "boot=live username=cripos hostname=cripos" \
+  --archive-areas "main contrib non-free" \
+  --keyring-packages "" \
+  --memtest none \
+  --security true \
+  --updates true \
+  --backports true
 
-echo "================================="
-echo "ISO built successfully:"
-echo "  $OUTPUT_ISO"
-echo "  SHA256: $(cat "$BUILD_DIR/cripos-alpha.iso.sha256" | awk '{print $1}')"
-echo "================================="
+# Build the ISO
+echo "Building ISO image (this may take 10-30 minutes)..."
+sudo lb build
+
+# Rename output
+if [ -f "live-image-amd64.hybrid.iso" ]; then
+  mv "live-image-amd64.hybrid.iso" "$OUTPUT_ISO"
+  echo "Generating SHA256 checksum..."
+  (cd "$BUILD_DIR" && sha256sum "$(basename "$OUTPUT_ISO")" > "$(basename "$OUTPUT_ISO").sha256")
+  echo "================================="
+  echo "ISO built successfully:"
+  echo "  $OUTPUT_ISO"
+  echo "  SHA256: $(cat "$BUILD_DIR/$(basename "$OUTPUT_ISO").sha256" | awk '{print $1}')"
+  echo "================================="
+else
+  echo "ERROR: ISO build failed. Check lb build output above."
+  exit 1
+fi
+</arg_value></tool_call>
