@@ -1,11 +1,11 @@
 #!/bin/bash
 # CripOS post-install hook
 # This runs inside the chroot during live-build
+# Files from includes.chroot are already copied into the chroot
 
 set -e
 
 # Install CripOS CLI as system command
-# (includes.chroot files are already copied into the chroot by live-build)
 ln -sf /opt/cripos/tools/crip.py /usr/local/bin/crip
 
 # Install os-release
@@ -21,6 +21,9 @@ SUPPORT_URL="https://github.com/creperman737/CripOS/issues"
 BUG_REPORT_URL="https://github.com/creperman737/CripOS/issues"
 OSRELEASE
 
+# Create CripOS config directory
+mkdir -p /etc/cripos
+
 # Set default theme
 echo "cripgreen" > /etc/cripos/theme
 
@@ -29,9 +32,6 @@ echo "crip-forest" > /etc/cripos/wallpaper
 
 # Set default language
 echo "en" > /etc/cripos/language
-
-# Create CripOS config directory
-mkdir -p /etc/cripos
 
 # Enable LightDM
 systemctl enable lightdm 2>/dev/null || true

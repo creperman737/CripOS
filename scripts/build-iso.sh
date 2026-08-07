@@ -74,7 +74,6 @@ lb config \
   --architectures amd64 \
   --binary-images iso-hybrid \
   --bootappend-live "boot=live username=cripos hostname=cripos" \
-  --archive-areas "main contrib non-free" \
   --keyring-packages "" \
   --memtest none \
   --security true \
