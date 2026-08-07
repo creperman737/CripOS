@@ -15,7 +15,7 @@ Endi hujjat yozishni deyarli to'xtatamiz. Endi **CripOS 0.1 Alpha Release Checkl
 - [x] Boot System
 - [x] Login System
 - [x] Desktop Branding
-- [ ] Wallpapers
+- [x] Wallpapers (6 SVG + 8 PNG)
 
 ### Core Applications
 
@@ -25,14 +25,19 @@ Endi hujjat yozishni deyarli to'xtatamiz. Endi **CripOS 0.1 Alpha Release Checkl
 - [x] Crip Files
 - [x] Crip Terminal
 - [x] Crip Update
+- [x] Crip Monitor
+- [x] Crip Installer
 
 ### Design
 
 - [x] Dark Theme
 - [x] Light Theme
+- [x] Crip Green Theme
 - [x] Minecraft Theme
 - [x] Icons
-- [x] Sounds
+- [x] Sounds (placeholder)
+- [x] Plymouth Splash
+- [x] Login Theme
 
 ### System
 
@@ -41,21 +46,28 @@ Endi hujjat yozishni deyarli to'xtatamiz. Endi **CripOS 0.1 Alpha Release Checkl
 - [x] Core Library
 - [x] Services
 - [x] Package Manager
+- [x] Theme Manager
+- [x] Wallpaper Manager
+- [x] Language Manager
+- [x] Updates
+- [x] Security
 
 ### Quality
 
-- [x] Unit Tests
+- [x] Unit Tests (78/78)
 - [x] Integration Tests
-- [ ] Alpha Testing
+- [ ] Alpha Testing (pending ISO build)
 
 ### Release
 
-- [x] Build ISO
+- [x] Build ISO Script
 - [x] Release Notes
-- [ ] GitHub Release
+- [x] CHANGELOG
+- [ ] GitHub Release (pending ISO)
 
 ### Real World Testing (Sprint 3)
 
+- [ ] Build ISO (`bash scripts/build-iso.sh`)
 - [ ] QEMU'da Live ISO yuklanishi
 - [ ] VirtualBox'da o'rnatish
 - [ ] VMware'da sinash

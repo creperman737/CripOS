@@ -18,7 +18,7 @@ Vision: Create a fast, modern, and user-friendly Debian-based Linux distribution
 ```text
 CripOS Roadmap
 
-v0.1 Alpha (Creeper)    ████████▏ 82%
+v0.1 Alpha (Creeper)    █████████░ 90%
 v0.2 Alpha              ░░░░░░░░░ 0%
 v0.3 Beta               ░░░░░░░░░ 0%
 v1.0 Stable             ░░░░░░░░░ 0%
@@ -31,7 +31,7 @@ Commits      430+
 Tests        78/78 ✅
 Themes       4
 Wallpapers   6
-CLI Commands 22
+CLI Commands 18
 Desktop Apps 6
 Base         Debian 13
 Desktop      Cinnamon
@@ -49,6 +49,7 @@ CLI            ██████████ 100%
 Themes/UI      ██████████ 100%
 Testing        ██████████ 100%
 Installer      ██████████ 100%
+ISO Build      ██████░░░░ 60%
 ```
 
 ## Features

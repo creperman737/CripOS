@@ -1,0 +1,9 @@
+# CripOS Startup Sound
+# This is a placeholder. In a real CripOS installation, this would be a
+# binary WAV file. For development purposes, this text file marks the
+# location where the startup sound should be placed.
+#
+# To add a real sound:
+#   1. Place a .wav file at sounds/startup.wav
+#   2. Ensure it is short (< 3 seconds) and low-volume
+#   3. The sound plays on boot after Plymouth splash
