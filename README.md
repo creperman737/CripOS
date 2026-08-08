@@ -1,3 +1,4 @@
+
 # 💚 CripOS
 
 **Never Give Up.**
@@ -68,6 +69,36 @@ ISO Build      █████████░ 80%
 - 🚧 Gaming Mode (planned)
 
 ## Installation
+
+For a default Cinnamon desktop setup, the base package set includes:
+
+```bash
+sudo apt install \
+  # Desktop environment
+  cinnamon-desktop-environment \
+  cinnamon-session \
+  cinnamon-control-center \
+  cinnamon-screensaver \
+  cinnamon-settings-daemon \
+  lightdm \
+  lightdm-gtk-greeter \
+  # Core utilities
+  python3 \
+  python3-tk \
+  python3-pip \
+  python3-venv \
+  git \
+  curl \
+  wget \
+  vim \
+  nano \
+  fonts-noto-color-emoji \
+  network-manager \
+  network-manager-gnome \
+  pulseaudio \
+  pulseaudio-utils \
+  pavucontrol
+```
 
 ```bash
 # Run the installer (Linux)
