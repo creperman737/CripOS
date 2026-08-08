@@ -9,7 +9,7 @@ Vision: Create a fast, modern, and user-friendly Debian-based Linux distribution
 ## Quick Overview
 
 - **Base:** Debian 13 (Trixie)
-- **Desktop:** XFCE (Live ISO) / Cinnamon (Vision)
+- **Desktop:** Cinnamon
 - **Codename:** Creeper
 - **Status:** 🚧 Alpha Development
 
