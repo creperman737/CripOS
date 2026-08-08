@@ -1,0 +1,11 @@
+# CripOS Desktop packages (XFCE + LightDM)
+xfce4
+xfce4-goodies
+lightdm
+lightdm-gtk-greeter
+xorg
+xinit
+dbus-x11
+network-manager
+network-manager-gnome
+sudo

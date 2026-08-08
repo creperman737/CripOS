@@ -14,25 +14,35 @@ VERSION="0.1-alpha"
 CODENAME="Creeper"
 
 # Check for required tools
-for tool in lb xorriso; do
+for tool in lb rsync; do
   if ! command -v "$tool" &>/dev/null; then
     echo "ERROR: $tool is not installed."
-    echo "Install with: sudo apt install live-build xorriso"
+    echo "Install with: sudo apt install live-build rsync"
     exit 1
   fi
 done
 
-echo "Setting up live-build config..."
+# Clean old build artifacts
+echo "Cleaning old build artifacts..."
 rm -rf "$LIVE_BUILD_DIR"
+rm -f "$OUTPUT_ISO"
+rm -f "$BUILD_DIR/cripos-alpha.iso.sha256"
+
+echo "Setting up live-build config..."
 mkdir -p "$LIVE_BUILD_DIR"
 
 # Copy live-build config
 cp -a "$REPO_ROOT/build/iso/live-build/config" "$LIVE_BUILD_DIR/config"
 
-# Copy CripOS source code into includes.chroot
+# Copy CripOS source code into includes.chroot (exclude build/ and .git/)
 echo "Copying CripOS source code..."
 mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/opt/cripos"
-cp -a "$REPO_ROOT"/. "$LIVE_BUILD_DIR/config/includes.chroot/opt/cripos/"
+rsync -a \
+  --exclude='build/' \
+  --exclude='.git/' \
+  --exclude='__pycache__/' \
+  "$REPO_ROOT/" \
+  "$LIVE_BUILD_DIR/config/includes.chroot/opt/cripos/"
 
 # Copy themes
 mkdir -p "$LIVE_BUILD_DIR/config/includes.chroot/usr/share/themes"
