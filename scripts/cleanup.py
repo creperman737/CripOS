@@ -27,4 +27,3 @@ for f in [
         print(f"  BAD: {f} has XML artifact")
     else:
         print(f"  OK: {f}")
-</arg_value></tool_call>
