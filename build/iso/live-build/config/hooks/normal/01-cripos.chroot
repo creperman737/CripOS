@@ -40,4 +40,3 @@ systemctl enable lightdm 2>/dev/null || true
 rm -rf /tmp/*
 
 echo "CripOS post-install hook completed."
-</arg_value></tool_call>

@@ -108,4 +108,3 @@ else
   echo "ERROR: ISO build failed. Check lb build output above."
   exit 1
 fi
-</arg_value></tool_call>
