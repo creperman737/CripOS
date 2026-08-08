@@ -1,0 +1,10 @@
+# CripOS Desktop packages (Cinnamon + LightDM)
+task-cinnamon-desktop
+lightdm
+lightdm-gtk-greeter
+xorg
+xinit
+dbus-x11
+network-manager
+network-manager-gnome
+sudo

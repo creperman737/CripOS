@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Welcome
+Comment=First-run setup wizard
+Exec=/opt/cripos/tools/crip.py welcome
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;
+StartupNotify=true

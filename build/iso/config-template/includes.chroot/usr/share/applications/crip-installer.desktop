@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Installer
+Comment=Install CripOS to disk
+Exec=/opt/cripos/tools/crip.py installer
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;
+StartupNotify=true

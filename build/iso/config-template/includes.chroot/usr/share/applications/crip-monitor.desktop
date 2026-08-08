@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Monitor
+Comment=System monitoring panel
+Exec=/opt/cripos/tools/crip.py monitor
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;Monitor;
+StartupNotify=true

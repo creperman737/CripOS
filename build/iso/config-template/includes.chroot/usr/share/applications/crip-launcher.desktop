@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Launcher
+Comment=Application launcher
+Exec=/opt/cripos/tools/crip.py launcher
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;
+StartupNotify=true

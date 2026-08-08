@@ -14,10 +14,10 @@ ARTIFACT_MARKERS = [
 
 WATCHED_FILES = [
     "scripts/build-iso.sh",
-    "build/iso/live-build/config/hooks/normal/01-cripos.chroot",
-    "build/iso/live-build/config/package-lists/crip-desktop.list.chroot",
-    "build/iso/live-build/config/package-lists/cripos-desktop.list.chroot",
-    "build/iso/live-build/config/includes.chroot/etc/lightdm/lightdm.conf.d/50-cripos.conf",
+    "build/iso/config-template/hooks/normal/01-cripos.chroot",
+    "build/iso/config-template/package-lists/crip-desktop.list.chroot",
+    "build/iso/config-template/package-lists/cripos-desktop.list.chroot",
+    "build/iso/config-template/includes.chroot/etc/lightdm/lightdm.conf.d/50-cripos.conf",
 ]
 
 
@@ -37,7 +37,7 @@ def clean_file(path: pathlib.Path) -> bool:
 
 
 def main() -> None:
-    dup = REPO_ROOT / "build/iso/live-build/config/package-lists/crip-desktop.list.chroot"
+    dup = REPO_ROOT / "build/iso/config-template/package-lists/crip-desktop.list.chroot"
     if dup.exists():
         dup.unlink()
         print(f"Deleted duplicate: {dup.relative_to(REPO_ROOT)}")

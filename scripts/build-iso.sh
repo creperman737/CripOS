@@ -8,6 +8,7 @@ echo "================================="
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="$REPO_ROOT/build/iso"
+CONFIG_TEMPLATE="$BUILD_DIR/config-template"
 LIVE_BUILD_DIR="$BUILD_DIR/live-build"
 OUTPUT_ISO="$BUILD_DIR/cripos-alpha.iso"
 VERSION="0.1-alpha"
@@ -31,8 +32,8 @@ rm -f "$BUILD_DIR/cripos-alpha.iso.sha256"
 echo "Setting up live-build config..."
 mkdir -p "$LIVE_BUILD_DIR"
 
-# Copy live-build config
-cp -a "$REPO_ROOT/build/iso/live-build/config" "$LIVE_BUILD_DIR/config"
+# Copy live-build config (from the permanent template, never wiped)
+cp -a "$CONFIG_TEMPLATE" "$LIVE_BUILD_DIR/config"
 
 # Copy CripOS source code into includes.chroot (exclude build/ and .git/)
 echo "Copying CripOS source code..."

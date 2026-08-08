@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crip Update
+Comment=System update manager
+Exec=/opt/cripos/tools/crip.py update
+Icon=crip-mascot
+Terminal=false
+Type=Application
+Categories=System;Settings;
+StartupNotify=true
